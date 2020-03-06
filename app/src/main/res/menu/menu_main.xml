@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.arpator.twittervideodownloader.MainActivity">
+    <item
+        android:id="@+id/item4"
+        android:title="How to Download"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/setting_guide"
+        android:icon="@mipmap/help"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/item1"
+        android:title="Share App"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/item3"
+        android:title="Rate us!"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/item2"
+        android:title="Settings"
+        app:showAsAction="never" />
+
+</menu>
