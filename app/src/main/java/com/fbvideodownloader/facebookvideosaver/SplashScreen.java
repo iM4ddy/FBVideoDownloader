@@ -1,4 +1,4 @@
-package com.xtreemapps.facebook_video_downloader;
+package com.fbvideodownloader.facebookvideosaver;
 
 import android.content.Intent;
 import android.os.Handler;

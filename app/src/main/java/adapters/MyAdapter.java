@@ -17,9 +17,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.xtreemapps.facebook_video_downloader.MainActivity;
-import com.xtreemapps.facebook_video_downloader.R;
-import com.xtreemapps.facebook_video_downloader.dialog_rename;
+import com.fbvideodownloader.facebookvideosaver.MainActivity;
+import com.fbvideodownloader.facebookvideosaver.R;
+import com.fbvideodownloader.facebookvideosaver.dialog_rename;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 

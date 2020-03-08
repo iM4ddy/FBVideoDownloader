@@ -1,4 +1,4 @@
-package com.xtreemapps.facebook_video_downloader;
+package com.fbvideodownloader.facebookvideosaver;
 
 /**
  * Created by mac on 25/01/16.

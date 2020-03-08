@@ -29,7 +29,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xtreemapps.facebook_video_downloader.R;
+import com.fbvideodownloader.facebookvideosaver.R;
 import com.squareup.picasso.Picasso;
 import com.thin.downloadmanager.DefaultRetryPolicy;
 import com.thin.downloadmanager.DownloadRequest;

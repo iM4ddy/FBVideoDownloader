@@ -2,7 +2,7 @@ package config;
 
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.xtreemapps.facebook_video_downloader.ConsentSDK;
+import com.fbvideodownloader.facebookvideosaver.ConsentSDK;
 
 import android.app.Activity;
 import android.widget.LinearLayout;
