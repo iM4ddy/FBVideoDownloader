@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/FBVideoDownloader.iml" filepath="$PROJECT_DIR$/FBVideoDownloader.iml" group="FBVideoDownloader" />
+      <module fileurl="file://$PROJECT_DIR$/app/FBVideoDownloader-app.iml" filepath="$PROJECT_DIR$/app/FBVideoDownloader-app.iml" group="FBVideoDownloader/app" />
       <module fileurl="file://$PROJECT_DIR$/Facebook Video Downloader.iml" filepath="$PROJECT_DIR$/Facebook Video Downloader.iml" group="Facebook Video Downloader" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Facebook Video Downloader/app" />
     </modules>
