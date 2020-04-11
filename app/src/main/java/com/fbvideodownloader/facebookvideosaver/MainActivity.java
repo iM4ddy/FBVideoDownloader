@@ -138,19 +138,27 @@ public class MainActivity extends ActivityManagePermission {
                 Log.d("tbposition", "po" + tab.getPosition());
 
 
-//                if (position == 0) {
-//
-//                    facebook e = ((facebook) getSupportFragmentManager()
-//                            .findFragmentByTag("android:switcher:" + R.id.viewpager + ":0"));
-//                    e.loadWebView();
-//
-//                }
+                if (position == 0) {
+
+                    mCounte++;
+
+                    String mCounter = getResources().getString(R.string.admob_interstitial_counter);
+                    // display interstitial
+                    if (mCounte == Integer.parseInt(mCounter)) {
+
+                        displayInterstitial();
+
+                        mCounte = 0;
+                    }
+
+                }
 
                 if (position == 2) {
 
                     recyclerview j = ((recyclerview) getSupportFragmentManager()
                             .findFragmentByTag("android:switcher:" + R.id.viewpager + ":2"));
                     j.loadMedia();
+
 
                     mCounte++;
 

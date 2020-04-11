@@ -30,9 +30,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import config.admob;
 import dialog.dialoginfo;
 import func.reg;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.loopj.android.http.*;
 
 import org.json.JSONException;
@@ -54,6 +59,7 @@ public class home extends Fragment {
     private long mLastClickTime = 0;
     ViewPager viewPager;
     public static LinearLayout linearlayout;
+    private InterstitialAd interstitialAd;
 
 
     @Override
@@ -84,7 +90,7 @@ public class home extends Fragment {
         });*/
 
         prgDialog = new ProgressDialog(getActivity());
-        prgDialog.setCancelable(false);
+        prgDialog.setCancelable(true);
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -130,6 +136,11 @@ public class home extends Fragment {
 
                         ClipData.Item item = clip.getItemAt(0);
                         textField.setText(func.reg.getBack(item.getText().toString(), "(http(s)?:\\/\\/(.+?\\.)?[^\\s\\.]+\\.[^\\s\\/]{1,9}(\\/[^\\s]+)?)"));
+
+                        if(clip.toString().contains("www.facebook.com") && interstitialAd.isLoaded()){
+
+                            interstitialAd.show();
+                        }
 
                     }else{
 
@@ -200,6 +211,18 @@ public class home extends Fragment {
         });
         */
 
+        MobileAds.initialize(getContext());
+        interstitialAd = new InterstitialAd(getContext());
+        interstitialAd.setAdUnitId(admob.Interstitial);
+        interstitialAd.loadAd(new AdRequest.Builder().build());
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                interstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+        });
+
         return rootView;
 
     }
@@ -234,11 +257,12 @@ public class home extends Fragment {
                         client.get(url, new TextHttpResponseHandler() {
                             @Override
                             public void onStart() {
-                                // Initiated the request
-                                prgDialog.setMessage("Loading...");
-                                prgDialog.show();
 
+                                // Initiated the request
+                                    prgDialog.setMessage("Loading...");
+                                    prgDialog.show();
                             }
+
 
                             @Override
                             public void onFinish() {

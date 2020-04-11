@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/app/FB Downloader-app.iml" filepath="$PROJECT_DIR$/app/FB Downloader-app.iml" group="FB Downloader/app" />
       <module fileurl="file://$PROJECT_DIR$/FB2020.iml" filepath="$PROJECT_DIR$/FB2020.iml" group="FB2020" />
       <module fileurl="file://$PROJECT_DIR$/app/FB2020-app.iml" filepath="$PROJECT_DIR$/app/FB2020-app.iml" group="FB2020/app" />
+      <module fileurl="file://$PROJECT_DIR$/FBDownloader.iml" filepath="$PROJECT_DIR$/FBDownloader.iml" group="FBDownloader" />
+      <module fileurl="file://$PROJECT_DIR$/app/FBDownloader-app.iml" filepath="$PROJECT_DIR$/app/FBDownloader-app.iml" group="FBDownloader/app" />
       <module fileurl="file://$PROJECT_DIR$/FBVideoDownloader.iml" filepath="$PROJECT_DIR$/FBVideoDownloader.iml" group="FBVideoDownloader" />
       <module fileurl="file://$PROJECT_DIR$/app/FBVideoDownloader-app.iml" filepath="$PROJECT_DIR$/app/FBVideoDownloader-app.iml" group="FBVideoDownloader/app" />
       <module fileurl="file://$PROJECT_DIR$/Facebook Video Downloader.iml" filepath="$PROJECT_DIR$/Facebook Video Downloader.iml" group="Facebook Video Downloader" />
