@@ -57,6 +57,10 @@
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+             test app id:
+             ca-app-pub-3940256099942544~3347511713
+             my app id:
+             ca-app-pub-6497675273236775~6229424631
         -->
         <meta-data
             android:name="com.google.android.gms.version"
@@ -67,8 +71,18 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
 
         <activity android:name="com.fbvideodownloader.facebookvideosaver.help" />
+        <service
+            android:name=".MyMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

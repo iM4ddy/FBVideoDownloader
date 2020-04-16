@@ -10,9 +10,13 @@ import android.widget.LinearLayout;
 public class admob {
 
     public static String publisherID = "pub-6497675273236775";
+    // my real banner ad:
     //public static String admBanner = "ca-app-pub-6497675273236775/6687771395";
+    // test banner ad
     public static String admBanner = "ca-app-pub-3940256099942544/6300978111";
+    // my real int ad
 	//public static String Interstitial = "ca-app-pub-6497675273236775/2748526380";
+    // test int ad
     public static String Interstitial = "ca-app-pub-3940256099942544/1033173712";
     public static String privacy_policy_url ="https://sites.google.com/view/xtreemapps/home";
 	

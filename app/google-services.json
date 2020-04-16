@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "19336604561",
+    "firebase_url": "https://fbdownloader-d3dd2.firebaseio.com",
+    "project_id": "fbdownloader-d3dd2",
+    "storage_bucket": "fbdownloader-d3dd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19336604561:android:eceb941d7d9a4eca8e8830",
+        "android_client_info": {
+          "package_name": "com.fbvideodownloader.facebookvideosaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19336604561-ou5hkf5iskl2f6oh35ppgjepb6dn3a7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA24L3oqz4Md6I_MdnYeP73sDI7ZJF9_Cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19336604561-ou5hkf5iskl2f6oh35ppgjepb6dn3a7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
