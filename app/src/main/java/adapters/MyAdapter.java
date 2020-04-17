@@ -204,7 +204,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             }else if(!reg.getBack(jpast.getFilePath(), "((\\.jpg|\\.png|\\.gif|\\.jpeg|\\.bmp)$)").isEmpty()){
 
                 holder.imagePlayer.setVisibility(View.GONE);
-                Picasso.with(activity).load(file).into(holder.imagevi);
+                Picasso.get().load(file).into(holder.imagevi);
                 subStringTitle(holder.title , jpast.getFileName());
 
             }

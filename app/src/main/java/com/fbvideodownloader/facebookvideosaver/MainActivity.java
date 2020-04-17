@@ -12,11 +12,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 
+import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -57,10 +59,25 @@ public class MainActivity extends ActivityManagePermission {
     public static Activity context;
     SharedPreferences sharedPref;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Rating Dialog
+        final RatingDialog ratingDialog = new RatingDialog.Builder(this)
+                .threshold(4)
+                .session(3)
+                .icon(getDrawable(R.drawable.star))
+                .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
+                    @Override
+                    public void onFormSubmitted(String feedback) {
+                        Toast.makeText(MainActivity.this, "Thank You!", Toast.LENGTH_SHORT).show();
+                    }
+                }).build();
+
+        ratingDialog.show();
 
         // Firebase Messaging
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -79,7 +96,7 @@ public class MainActivity extends ActivityManagePermission {
                         if (!task.isSuccessful()) {
                             msg = "Failed";
                         }
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -286,6 +303,7 @@ public class MainActivity extends ActivityManagePermission {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -298,11 +316,22 @@ public class MainActivity extends ActivityManagePermission {
 
         switch (id) {
             case R.id.item3:
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-                } catch (android.content.ActivityNotFoundException anfe) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
-                }
+//                try {
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+//                } catch (android.content.ActivityNotFoundException anfe) {
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
+//                }
+                final RatingDialog ratingDialog = new RatingDialog.Builder(this)
+                        .threshold(4)
+                        .icon(getDrawable(R.drawable.star))
+                        .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
+                            @Override
+                            public void onFormSubmitted(String feedback) {
+                                Toast.makeText(MainActivity.this, "Thank You!", Toast.LENGTH_SHORT).show();
+                            }
+                        }).build();
+
+                ratingDialog.show();
                 return true;
 
             case R.id.item2:

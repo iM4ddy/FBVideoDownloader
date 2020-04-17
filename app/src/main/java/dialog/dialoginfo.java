@@ -422,7 +422,7 @@ public class dialoginfo extends DialogFragment{
 
             if(image.startsWith("http")){
 
-                Picasso.with(getActivity()).load(image).into(thubnail);
+                Picasso.get().load(image).into(thubnail);
             }
 
         }else{
