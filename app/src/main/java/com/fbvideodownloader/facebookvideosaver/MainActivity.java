@@ -200,6 +200,21 @@ public class MainActivity extends ActivityManagePermission {
                     }
 
                 }
+                if (position == 1) {
+
+
+                    mCounte++;
+
+                    String mCounter = getResources().getString(R.string.admob_interstitial_counter);
+                    // display interstitial
+                    if (mCounte >= Integer.parseInt(mCounter)) {
+
+                        displayInterstitial();
+
+                        mCounte = 0;
+                    }
+
+                }
 
                 if (position == 2) {
 
@@ -212,7 +227,7 @@ public class MainActivity extends ActivityManagePermission {
 
                     String mCounter = getResources().getString(R.string.admob_interstitial_counter);
                     // display interstitial
-                    if (mCounte == Integer.parseInt(mCounter)) {
+                    if (mCounte >= Integer.parseInt(mCounter)) {
 
                         displayInterstitial();
 
