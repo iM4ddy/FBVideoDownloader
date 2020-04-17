@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "19336604561-d1r8lqdnsam72p5sa9rarogk3lpshte5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fbvideodownloader.facebookvideosaver",
+            "certificate_hash": "297dc16af2f1055005e48bbc319eedf962f2f528"
+          }
+        },
+        {
           "client_id": "19336604561-ou5hkf5iskl2f6oh35ppgjepb6dn3a7r.apps.googleusercontent.com",
           "client_type": 3
         }
