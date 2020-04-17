@@ -2,26 +2,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.arpator.twittervideodownloader.MainActivity">
-    <item
-        android:id="@+id/item4"
-        android:title="How to Download"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/setting_guide"
-        android:icon="@mipmap/help"
-        app:showAsAction="always" />
+    <item android:title="Main Menu"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_more_vert_black_24dp">
+        <menu>
+            <item
+                android:id="@+id/item4"
+                android:orderInCategory="100"
+                android:title="How to Download"
+                android:icon="@drawable/ic_help_black_24dp"
+                app:showAsAction="never" />
 
-    <item
-        android:id="@+id/item1"
-        android:title="Share App"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/item3"
-        android:title="Rate us!"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/item2"
-        android:title="Settings"
-        app:showAsAction="never" />
-
+            <item
+                android:id="@+id/item1"
+                android:orderInCategory="100"
+                android:title="Share App"
+                android:icon="@drawable/ic_share_black_24dp"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/item3"
+                android:orderInCategory="100"
+                android:title="Rate us!"
+                android:icon="@drawable/ic_rate_review_black_24dp"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/item2"
+                android:title="Settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                app:showAsAction="never" />
+        </menu>
+    </item>
 </menu>

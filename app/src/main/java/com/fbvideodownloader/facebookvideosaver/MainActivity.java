@@ -87,8 +87,8 @@ public class MainActivity extends ActivityManagePermission {
         manager.createNotificationChannel(channel);
         }
 
-
-        FirebaseMessaging.getInstance().subscribeToTopic("general")
+        // rating topic firebase notification
+        FirebaseMessaging.getInstance().subscribeToTopic("rating")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -97,6 +97,18 @@ public class MainActivity extends ActivityManagePermission {
                             msg = "Failed";
                         }
                         //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        ratingDialog.show();
+                    }
+                });
+        // open topic firebase notification
+        FirebaseMessaging.getInstance().subscribeToTopic("open")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Successful";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
                     }
                 });
 
@@ -353,9 +365,9 @@ public class MainActivity extends ActivityManagePermission {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
 
-            case R.id.setting_guide:
-                startActivity(new Intent(MainActivity.this, help.class));
-                return true;
+//            case R.id.setting_guide:
+//                startActivity(new Intent(MainActivity.this, help.class));
+//                return true;
 
             case R.id.item1:
                 Intent i = new Intent(Intent.ACTION_SEND);
