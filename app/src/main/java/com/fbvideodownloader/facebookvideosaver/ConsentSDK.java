@@ -379,12 +379,12 @@ public class ConsentSDK {
                                     admob.admobBannerCall(MainActivity.context,recyclerview.linearlayout);
 
                                 }catch (Exception ex){ }
-                                try {
-                                    if(((LinearLayout) facebook.linearlayout).getChildCount() > 0)
-                                        ((LinearLayout) facebook.linearlayout).removeAllViews();
-                                    admob.admobBannerCall(MainActivity.context,facebook.linearlayout);
-
-                                }catch (Exception ex){ }
+//                                try {
+//                                    if(((LinearLayout) facebook.linearlayout).getChildCount() > 0)
+//                                        ((LinearLayout) facebook.linearlayout).removeAllViews();
+//                                    admob.admobBannerCall(MainActivity.context,facebook.linearlayout);
+//
+//                                }catch (Exception ex){ }
 
                                 break;
                             default:
@@ -412,12 +412,12 @@ public class ConsentSDK {
                                     admob.admobBannerCall(MainActivity.context,recyclerview.linearlayout);
 
                                 }catch (Exception ex){ }
-                                try {
-                                    if(((LinearLayout) facebook.linearlayout).getChildCount() > 0)
-                                        ((LinearLayout) facebook.linearlayout).removeAllViews();
-                                    admob.admobBannerCall(MainActivity.context,facebook.linearlayout);
-
-                                }catch (Exception ex){ }
+//                                try {
+//                                    if(((LinearLayout) facebook.linearlayout).getChildCount() > 0)
+//                                        ((LinearLayout) facebook.linearlayout).removeAllViews();
+//                                    admob.admobBannerCall(MainActivity.context,facebook.linearlayout);
+//
+//                                }catch (Exception ex){ }
                                 break;
                         }
                         // Callback

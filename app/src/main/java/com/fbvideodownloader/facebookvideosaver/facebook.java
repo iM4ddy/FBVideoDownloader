@@ -3,6 +3,9 @@ package com.fbvideodownloader.facebookvideosaver;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,15 +27,16 @@ public class facebook extends Fragment {
     private ProgressBar mprogress;
     WebView webo;
     // variable to track event time
-    public static LinearLayout linearlayout;
+//    public static LinearLayout linearlayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle saveInstanceState){
+        printLog("onCreateView Called");
 
         View rootView = inflater.inflate(R.layout.facebook, container, false);
-        linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
-        config.admob.admobBannerCall(getActivity(), linearlayout);
+//        linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
+//        config.admob.admobBannerCall(getActivity(), linearlayout);
         webo = (WebView) rootView.findViewById(R.id.webView);
         mprogress = (ProgressBar)rootView.findViewById(R.id.mprogress);
 
@@ -295,13 +299,33 @@ public class facebook extends Fragment {
 
     @Override
     public void onResume() {
-
         super.onResume();
+        printLog("onResume Called");
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    // handle back button's click listener
+                    FragmentTransaction fr = getFragmentManager().beginTransaction();
+                    fr.replace(R.id.fragg, new BrowseBtnFragment());
+                    fr.commit();
+                    webo.setVisibility(View.GONE);
+                    mprogress.setVisibility(View.GONE);
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        printLog("onPause Called");
     }
 
     public void mDialog(){
@@ -323,6 +347,12 @@ public class facebook extends Fragment {
 
             Toast.makeText(getContext(), "There is No results try again with new Link!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    // Frag Life Cycle
+    private void printLog(String s) {
+// display a message in Log File
+        Log.d("LifeCycle:", s);
     }
 
 }

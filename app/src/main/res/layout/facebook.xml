@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     android:id="@+id/fragg">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/unitads" />
-
     <ProgressBar
         android:id="@+id/mprogress"
         style="@android:style/Widget.ProgressBar.Horizontal"
