@@ -51,7 +51,7 @@ import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
 
 public class MainActivity extends ActivityManagePermission {
 
-    private int mCounte = 0;
+    private int mCounte = 2;
     public static InterstitialAd interstitial;
     boolean doubleBackToExitPressedOnce = false;
     public static String filepath = "";
@@ -72,7 +72,7 @@ public class MainActivity extends ActivityManagePermission {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Ad Every 1 Minute
+        // Ad Every 3 Minutes
         scheduler = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override

@@ -309,11 +309,7 @@ public class facebook extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                     // handle back button's click listener
-                    FragmentTransaction fr = getFragmentManager().beginTransaction();
-                    fr.replace(R.id.fragg, new BrowseBtnFragment());
-                    fr.commit();
-                    webo.setVisibility(View.GONE);
-                    mprogress.setVisibility(View.GONE);
+                    loadWebView();
                     return true;
                 }
                 return false;

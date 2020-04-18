@@ -63,6 +63,7 @@
                     android:background="@drawable/custom_btn"
                     android:text="@string/show"
                     android:textColor="@color/barText"
+                    android:textStyle="bold"
                     android:theme="@style/SpecialButton" />
 
                 <Space
