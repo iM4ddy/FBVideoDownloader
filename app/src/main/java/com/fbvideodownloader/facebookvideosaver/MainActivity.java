@@ -38,6 +38,10 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import config.admob;
 import func.movefile;
 import func.notifications;
@@ -60,12 +64,29 @@ public class MainActivity extends ActivityManagePermission {
     private GoogleApiClient client;
     public static Activity context;
     SharedPreferences sharedPref;
+    ScheduledExecutorService scheduler;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Ad Every 1 Minute
+        scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(interstitial.isLoaded()){
+                            interstitial.show();
+                        }
+                    }
+                });
+            }
+        }, 180, 180, TimeUnit.SECONDS);
 
         //Rating Dialog
         final RatingDialog ratingDialog = new RatingDialog.Builder(this)
@@ -491,6 +512,12 @@ public class MainActivity extends ActivityManagePermission {
                 // Nothing selected
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        scheduler.shutdown();
     }
 
     @Override

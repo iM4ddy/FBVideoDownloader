@@ -138,7 +138,6 @@ public class home extends Fragment {
                         textField.setText(func.reg.getBack(item.getText().toString(), "(http(s)?:\\/\\/(.+?\\.)?[^\\s\\.]+\\.[^\\s\\/]{1,9}(\\/[^\\s]+)?)"));
 
                         if(clip.toString().contains("www.facebook.com") && interstitialAd.isLoaded()){
-
                             interstitialAd.show();
                         }
 

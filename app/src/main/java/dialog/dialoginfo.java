@@ -30,6 +30,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fbvideodownloader.facebookvideosaver.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 import com.thin.downloadmanager.DefaultRetryPolicy;
 import com.thin.downloadmanager.DownloadRequest;
@@ -44,6 +48,7 @@ import org.json.JSONTokener;
 
 import java.io.File;
 
+import config.admob;
 import func.reg;
 
 /**
@@ -447,6 +452,8 @@ public class dialoginfo extends DialogFragment{
             @Override
             public void onClick(View v) {
 
+
+
                 if(Build.VERSION.SDK_INT >= 23){
 
                     boolean hasPermission = (ContextCompat.checkSelfPermission(getActivity(),
@@ -521,6 +528,7 @@ public class dialoginfo extends DialogFragment{
                 getDialog().dismiss();
             }
         });
+
         return rootView;
 
     }
