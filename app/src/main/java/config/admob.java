@@ -18,6 +18,12 @@ public class admob {
 	//public static String Interstitial = "ca-app-pub-6497675273236775/2748526380";
     // test int ad
     public static String Interstitial = "ca-app-pub-3940256099942544/1033173712";
+    // my real Native ad
+    //public static String native_unit = "ca-app-pub-6497675273236775/6997079347";
+    // test native ad
+    public static String native_unit = "ca-app-pub-3940256099942544/2247696110";
+
+
     public static String privacy_policy_url ="https://sites.google.com/view/xtreemapps/home";
 	
 	public static void admobBannerCall(Activity acitivty , LinearLayout linerlayout){

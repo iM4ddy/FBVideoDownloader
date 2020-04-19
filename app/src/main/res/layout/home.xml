@@ -98,5 +98,17 @@
 
         </LinearLayout>
 
+        <com.google.android.ads.nativetemplates.TemplateView
+            android:id="@+id/my_template"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:gnt_template_type="@layout/gnt_medium_template_view"
+            />
+
+
     </LinearLayout>
 </ScrollView>

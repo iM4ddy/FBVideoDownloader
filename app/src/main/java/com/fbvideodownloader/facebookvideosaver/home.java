@@ -34,10 +34,13 @@ import config.admob;
 import dialog.dialoginfo;
 import func.reg;
 
+import com.google.android.ads.nativetemplates.TemplateView;
 import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.loopj.android.http.*;
 
 import org.json.JSONException;
@@ -66,7 +69,7 @@ public class home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle saveInstanceState){
 
-        View rootView = inflater.inflate(R.layout.home, container, false);
+        final View rootView = inflater.inflate(R.layout.home, container, false);
         viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
 
         linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
@@ -76,18 +79,8 @@ public class home extends Fragment {
         past = (Button)rootView.findViewById(R.id.btnshow);
         btnshow = (Button)rootView.findViewById(R.id.btndl);
         textView = (TextView)rootView.findViewById(R.id.textView);
-        //btnsharethisapp =(Button)rootView.findViewById(R.id.sharethisapp);
-        //btnrateus =(Button)rootView.findViewById(R.id.rateus);
-        //btnhelp= (Button) rootView.findViewById(R.id.help);
-        // btnmoreapp =(Button)rootView.findViewById(R.id.moreapp);
 
-        /*btnhelp.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), help.class);
-                startActivity(intent);
-            }
-        });*/
+
 
         prgDialog = new ProgressDialog(getActivity());
         prgDialog.setCancelable(true);
@@ -176,40 +169,10 @@ public class home extends Fragment {
         });
 
 
-        /*btnsharethisapp.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                func.share.mShareText("Hey my friend check out this app\n https://play.google.com/store/apps/details?id="+ getActivity().getPackageName() +" \n", getActivity());
-            }
-        });
 
-        btnrateus.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        //=====Admob Ads=====//
 
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-                } catch (android.content.ActivityNotFoundException anfe) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
-                }
-
-            }
-        });*/
-        /*
-        btnmoreapp.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:mobicodepro")));
-                } catch (android.content.ActivityNotFoundException anfe) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/search?q=pub:mobicodepro")));
-                }
-
-            }
-        });
-        */
-
+        // Interstitial
         MobileAds.initialize(getContext());
         interstitialAd = new InterstitialAd(getContext());
         interstitialAd.setAdUnitId(admob.Interstitial);
@@ -221,6 +184,23 @@ public class home extends Fragment {
                 interstitialAd.loadAd(new AdRequest.Builder().build());
             }
         });
+        // Native Ads
+
+        AdLoader.Builder builder = new AdLoader.Builder(getContext(), admob.native_unit);
+        builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
+            @Override
+            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
+
+                TemplateView templateView = rootView.findViewById(R.id.my_template);
+                templateView.setNativeAd(unifiedNativeAd);
+
+
+            }
+        });
+
+        AdLoader adLoader = builder.build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adLoader.loadAd(adRequest);
 
         return rootView;
 
