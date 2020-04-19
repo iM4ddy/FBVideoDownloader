@@ -61,7 +61,6 @@ public class home extends Fragment {
     // variable to track event time
     private long mLastClickTime = 0;
     ViewPager viewPager;
-    public static LinearLayout linearlayout;
     private InterstitialAd interstitialAd;
 
 
@@ -72,8 +71,8 @@ public class home extends Fragment {
         final View rootView = inflater.inflate(R.layout.home, container, false);
         viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
 
-        linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
-        config.admob.admobBannerCall(getActivity(), linearlayout);
+        /*linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
+        config.admob.admobBannerCall(getActivity(), linearlayout);*/
 
         textField = (EditText)rootView.findViewById(R.id.webobo);
         past = (Button)rootView.findViewById(R.id.btnshow);
@@ -192,6 +191,7 @@ public class home extends Fragment {
             public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
 
                 TemplateView templateView = rootView.findViewById(R.id.my_template);
+                templateView.setVisibility(View.VISIBLE);
                 templateView.setNativeAd(unifiedNativeAd);
 
 

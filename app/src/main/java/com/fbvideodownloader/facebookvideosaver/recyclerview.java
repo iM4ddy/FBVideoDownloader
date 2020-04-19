@@ -16,6 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.google.android.ads.nativetemplates.TemplateView;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +29,7 @@ import java.util.Comparator;
 
 import adapters.MyAdapter;
 import adapters.arrayAdapter;
+import config.admob;
 import func.reg;
 
 /**
@@ -36,17 +43,16 @@ public class recyclerview extends Fragment {
     public String folderName = "";
     File file;
     ArrayList<arrayAdapter> jData = new ArrayList<>();
-    public static LinearLayout linearlayout;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle saveInstanceState){
 
-        View rootView = inflater.inflate(R.layout.recyclerview, container, false);
+        final View rootView = inflater.inflate(R.layout.recyclerview, container, false);
 
-        linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
-        config.admob.admobBannerCall(getActivity(), linearlayout);
+        /*linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
+        config.admob.admobBannerCall(getActivity(), linearlayout);*/
 
         folderName = getResources().getString(R.string.foldername);
 
@@ -57,6 +63,24 @@ public class recyclerview extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // Native Ad
+        MobileAds.initialize(getContext());
+        AdLoader.Builder builder = new AdLoader.Builder(getContext(), admob.native_unit);
+        builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
+            @Override
+            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
+
+                TemplateView templateView = rootView.findViewById(R.id.my_template_2);
+                templateView.setVisibility(View.VISIBLE);
+                templateView.setNativeAd(unifiedNativeAd);
+
+            }
+        });
+
+        AdLoader adLoader = builder.build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adLoader.loadAd(adRequest);
 
         return rootView;
     }

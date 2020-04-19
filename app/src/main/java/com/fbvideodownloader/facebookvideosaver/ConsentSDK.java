@@ -367,18 +367,18 @@ public class ConsentSDK {
                                     admob.admobBannerCall(help.context,help.linearlayout);
 
                                 }catch (Exception ex){ }
-                                try {
+                                /*try {
                                     if(((LinearLayout) home.linearlayout).getChildCount() > 0)
                                         ((LinearLayout) home.linearlayout).removeAllViews();
                                     admob.admobBannerCall(MainActivity.context,home.linearlayout);
 
-                                }catch (Exception ex){ }
-                                try {
+                                }catch (Exception ex){ }*/
+                                /*try {
                                     if(((LinearLayout) recyclerview.linearlayout).getChildCount() > 0)
                                         ((LinearLayout) recyclerview.linearlayout).removeAllViews();
                                     admob.admobBannerCall(MainActivity.context,recyclerview.linearlayout);
 
-                                }catch (Exception ex){ }
+                                }catch (Exception ex){ }*/
 //                                try {
 //                                    if(((LinearLayout) facebook.linearlayout).getChildCount() > 0)
 //                                        ((LinearLayout) facebook.linearlayout).removeAllViews();
@@ -400,18 +400,18 @@ public class ConsentSDK {
                                     admob.admobBannerCall(help.context,help.linearlayout);
 
                                 }catch (Exception ex){ }
-                                try {
+                                /*try {
                                     if(((LinearLayout) home.linearlayout).getChildCount() > 0)
                                         ((LinearLayout) home.linearlayout).removeAllViews();
                                     admob.admobBannerCall(MainActivity.context,home.linearlayout);
 
-                                }catch (Exception ex){ }
-                                try {
+                                }catch (Exception ex){ }*/
+                                /*try {
                                     if(((LinearLayout) recyclerview.linearlayout).getChildCount() > 0)
                                         ((LinearLayout) recyclerview.linearlayout).removeAllViews();
                                     admob.admobBannerCall(MainActivity.context,recyclerview.linearlayout);
 
-                                }catch (Exception ex){ }
+                                }catch (Exception ex){ }*/
 //                                try {
 //                                    if(((LinearLayout) facebook.linearlayout).getChildCount() > 0)
 //                                        ((LinearLayout) facebook.linearlayout).removeAllViews();

@@ -14,10 +14,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.ads.nativetemplates.TemplateView;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
+
+import config.admob;
+
 public class BrowseBtnFragment extends Fragment {
 
     public Button browseBtn;
-    boolean doubleBackToExitPressedOnce = false;
 
     @Nullable
     @Override
@@ -25,7 +32,6 @@ public class BrowseBtnFragment extends Fragment {
         View view = inflater.inflate(R.layout.browse_btn, container, false);
 
             browseBtn = (Button) view.findViewById(R.id.button6);
-
             browseBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -41,36 +47,5 @@ public class BrowseBtnFragment extends Fragment {
 
 
         return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        getView().setFocusableInTouchMode(true);
-        getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                    // handle back button's click listener
-                    if (doubleBackToExitPressedOnce) {
-                        getActivity().finish();
-                    }
-                    doubleBackToExitPressedOnce = true;
-                    Toast.makeText(getContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-                    new Handler().postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            doubleBackToExitPressedOnce = false;
-                        }
-                    }, 2000);
-                    return true;
-                }
-                return false;
-            }
-        });
-
     }
 }

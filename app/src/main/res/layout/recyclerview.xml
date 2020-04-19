@@ -7,23 +7,29 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.arpator.twittervideodownloader.MainActivity">
+    >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <com.google.android.ads.nativetemplates.TemplateView
+        android:id="@+id/my_template_2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/unitads" >
-    </LinearLayout>
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="gone"
+        app:gnt_template_type="@layout/gnt_small_template_view" />
 
     <TextView
         android:id="@+id/isEmptyDownloadList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/unitads"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/my_template_2"
         android:gravity="center_vertical|center_horizontal"
-        android:text="No downloads"
-        android:textSize="20sp" />
+        android:text="No downloads!"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
