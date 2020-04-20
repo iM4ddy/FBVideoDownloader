@@ -51,7 +51,7 @@ import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
 
 public class MainActivity extends ActivityManagePermission {
 
-    private int mCounte = 2;
+    private int mCounte = 3;
     public static InterstitialAd interstitial;
     boolean doubleBackToExitPressedOnce = false;
     public static String filepath = "";
@@ -227,7 +227,7 @@ public class MainActivity extends ActivityManagePermission {
 
                     String mCounter = getResources().getString(R.string.admob_interstitial_counter);
                     // display interstitial
-                    if (mCounte == Integer.parseInt(mCounter)) {
+                    if (mCounte >= Integer.parseInt(mCounter)) {
 
                         displayInterstitial();
 

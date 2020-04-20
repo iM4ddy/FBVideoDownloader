@@ -9,18 +9,24 @@ import android.widget.LinearLayout;
 
 public class admob {
 
-    public static String publisherID = "pub-6497675273236775";
-    // my real banner ad:
-    //public static String admBanner = "ca-app-pub-6497675273236775/6687771395";
-    // test banner ad
+    public static String publisherID = "pub-5260818953194377";
+
+     /* my real banner ad */
+    //public static String admBanner = "ca-app-pub-5260818953194377/7856356130";
+
+    /* test banner ad */
     public static String admBanner = "ca-app-pub-3940256099942544/6300978111";
-    // my real int ad
-	//public static String Interstitial = "ca-app-pub-6497675273236775/2748526380";
-    // test int ad
+
+    /* my real int ad */
+	//public static String Interstitial = "ca-app-pub-5260818953194377/2607898889";
+
+	/* test int ad */
     public static String Interstitial = "ca-app-pub-3940256099942544/1033173712";
-    // my real Native ad
-    //public static String native_unit = "ca-app-pub-6497675273236775/6997079347";
-    // test native ad
+
+    /* my real Native ad */
+    //public static String native_unit = "ca-app-pub-5260818953194377/7668653871";
+
+    /* test native ad */
     public static String native_unit = "ca-app-pub-3940256099942544/2247696110";
 
 

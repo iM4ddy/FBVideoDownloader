@@ -24,28 +24,45 @@ import config.admob;
 
 public class BrowseBtnFragment extends Fragment {
 
-    public Button browseBtn;
+    private Button browseBtn;
+    TemplateView templateView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.browse_btn, container, false);
+        final View rootView = inflater.inflate(R.layout.browse_btn, container, false);
 
-            browseBtn = (Button) view.findViewById(R.id.button6);
+            templateView = rootView.findViewById(R.id.my_template_3);
+            browseBtn = (Button) rootView.findViewById(R.id.button6);
             browseBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     FragmentTransaction fr = getFragmentManager().beginTransaction();
-                    fr.replace(R.id.browse_btn_frame, new facebook());
+                    fr.replace(R.id.linearLayout2, new facebook());
                     fr.commit();
 
                     browseBtn.setVisibility(View.GONE);
-
+                    templateView.setVisibility(View.GONE);
                 }
             });
 
+            MobileAds.initialize(getContext());
+        AdLoader.Builder builder = new AdLoader.Builder(getContext(), admob.native_unit);
+        builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
+            @Override
+            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
 
-        return view;
+                templateView.setVisibility(View.VISIBLE);
+                templateView.setNativeAd(unifiedNativeAd);
+
+            }
+        });
+
+        AdLoader adLoader = builder.build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adLoader.loadAd(adRequest);
+
+        return rootView;
     }
 }

@@ -61,6 +61,7 @@ public class home extends Fragment {
     // variable to track event time
     private long mLastClickTime = 0;
     ViewPager viewPager;
+    private int ad_count = 0;
     private InterstitialAd interstitialAd;
 
 
@@ -128,13 +129,14 @@ public class home extends Fragment {
 
                         ClipData.Item item = clip.getItemAt(0);
                         textField.setText(func.reg.getBack(item.getText().toString(), "(http(s)?:\\/\\/(.+?\\.)?[^\\s\\.]+\\.[^\\s\\/]{1,9}(\\/[^\\s]+)?)"));
-
-                        if(clip.toString().contains("www.facebook.com") && interstitialAd.isLoaded()){
+                        ad_count++;
+                        if(clip.toString().contains("www.facebook.com") && interstitialAd.isLoaded() && ad_count >= 3){
                             interstitialAd.show();
+                            ad_count = 0;
                         }
 
-                    }else{
 
+                    }else{
                         Toast.makeText(getActivity(), "Empty clipboard!", Toast.LENGTH_LONG).show();
                     }
 
