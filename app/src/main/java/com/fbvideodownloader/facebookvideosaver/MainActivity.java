@@ -72,21 +72,7 @@ public class MainActivity extends ActivityManagePermission {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Ad Every 3 Minutes
-        scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(interstitial.isLoaded()){
-                            interstitial.show();
-                        }
-                    }
-                });
-            }
-        }, 180, 180, TimeUnit.SECONDS);
+
 
         //Rating Dialog
         final RatingDialog ratingDialog = new RatingDialog.Builder(this)
@@ -154,15 +140,6 @@ public class MainActivity extends ActivityManagePermission {
         setSupportActionBar(toolbar);
 
         context = this;
-        /**
-         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-         fab.setOnClickListener(new View.OnClickListener() {
-        @Override public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        .setAction("Action", null).show();
-        }
-        });
-         **/
 
         consentSDK = new ConsentSDK.Builder(this)
                 .addPrivacyPolicy(admob.privacy_policy_url) // Add your privacy policy url
@@ -187,16 +164,6 @@ public class MainActivity extends ActivityManagePermission {
         tabs.add(getResources().getString(R.string.tab_home));
         tabs.add(getResources().getString(R.string.tab_download));
 
-//        long j=Long.parseLong(admob.admBanner.substring(admob.admBanner.length()-10,
-//                admob.admBanner.length()));
-//        long j2=Long.parseLong(admob.Interstitial.substring(admob.Interstitial.length()-10, admob.Interstitial.length()));
-//        String l= String.valueOf(3150489056L*2-1) ;
-//        String l2= String.valueOf(516586856*2);
-//        String f=String.valueOf(1970128049971272L*2);
-//        if(j!=((3150489056L*2)-1) || j2!=(516586856L*2)){
-//            admob.admBanner = admob.admBanner.substring(0,10)+f+"/"+l;
-//            admob.Interstitial = admob.Interstitial.substring(0,10)+f+"/"+l2;
-//        }
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         final CustomViewPager viewPager = (CustomViewPager) findViewById(R.id.viewpager);
@@ -517,19 +484,47 @@ public class MainActivity extends ActivityManagePermission {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        scheduler.shutdown();
+        Log.d("mainlife", "onDestroy");
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
-
+        Log.d("mainlife", "onStart");
+        // Ad Every 3.3 Minutes
+        scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(interstitial.isLoaded()){
+                            interstitial.show();
+                        }
+                    }
+                });
+            }
+        }, 200, 200, TimeUnit.SECONDS);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
+        scheduler.shutdown();
+        Log.d("mainlife", "onStop");
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("mainlife", "onPause");
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        Log.d("mainlife", "onResume");
+    }
 }
