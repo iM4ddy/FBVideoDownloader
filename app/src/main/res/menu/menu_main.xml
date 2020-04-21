@@ -1,10 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.arpator.twittervideodownloader.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:title="Main Menu"
         app:showAsAction="always"
-        android:icon="@drawable/ic_more_vert_black_24dp">
+        android:icon="@drawable/ic_more_vert_white_24dp">
         <menu>
             <item
                 android:id="@+id/item4"
