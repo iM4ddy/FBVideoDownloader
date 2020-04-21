@@ -1,5 +1,6 @@
 package adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import androidx.fragment.app.FragmentActivity;
@@ -27,6 +28,8 @@ import net.rdrei.android.dirchooser.DirectoryChooserActivity;
 import net.rdrei.android.dirchooser.DirectoryChooserConfig;
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import func.reg;
@@ -48,6 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private ImageButton menu;
         private Button play,share,delete;
         private CardView cardView;
+
 
         public ViewHolder(View v) {
             super(v);
@@ -132,8 +136,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                     }
                 });
 
-                //showing popup menu
-                popup.show();
+                // Pop Up With Icons
+                try {
+                    Field field = popup.getClass().getDeclaredField("mPopup");
+                    field.setAccessible(true);
+                    Object menuPopupHelper = field.get(popup);
+                    menuPopupHelper.getClass()
+                            .getDeclaredMethod("setForceShowIcon", boolean.class)
+                            .invoke(menuPopupHelper, true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    popup.show();
+                }
 
             }else if(maid[1] == v.getId()){
 

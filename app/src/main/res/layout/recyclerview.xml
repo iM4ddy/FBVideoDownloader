@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="8dp"
         android:visibility="gone"
         app:gnt_template_type="@layout/gnt_small_template_view" />
@@ -24,10 +24,12 @@
         android:id="@+id/isEmptyDownloadList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_below="@+id/my_template_2"
+        android:layout_marginTop="12dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="No downloads!"
+        android:textAllCaps="true"
+        android:textColor="#575555"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -36,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/isEmptyDownloadList"/>
 
 </RelativeLayout>
