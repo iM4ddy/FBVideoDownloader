@@ -41,6 +41,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.loopj.android.http.*;
 
 import org.json.JSONException;
@@ -53,7 +55,7 @@ import cz.msebera.android.httpclient.Header;
 public class home extends Fragment {
 
     private String html = "", desc = "", imagina = "", url = "" , video = "" , videoArray="";
-    EditText textField;
+    TextInputEditText textField;
     Button past , btnshow , btnsharethisapp, btnrateus, btnhelp, btnmoreapp;
     TextView textView;
     ProgressDialog prgDialog;
@@ -75,7 +77,7 @@ public class home extends Fragment {
         /*linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
         config.admob.admobBannerCall(getActivity(), linearlayout);*/
 
-        textField = (EditText)rootView.findViewById(R.id.webobo);
+        textField = (TextInputEditText) rootView.findViewById(R.id.my_text_field2);
         past = (Button)rootView.findViewById(R.id.btnshow);
         btnshow = (Button)rootView.findViewById(R.id.btndl);
         textView = (TextView)rootView.findViewById(R.id.textView);

@@ -34,6 +34,7 @@ public class BrowseBtnFragment extends Fragment {
 
             templateView = rootView.findViewById(R.id.my_template_3);
             browseBtn = (Button) rootView.findViewById(R.id.button6);
+            browseBtn.setVisibility(View.VISIBLE);
             browseBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

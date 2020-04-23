@@ -1,95 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView3"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/my_text_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint"
+        android:inputType="textPersonName"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" >
-
-                <EditText
-                    android:id="@+id/webobo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".80"
-                    android:background="@drawable/border_edittext"
-                    android:ems="10"
-                    android:hint="@string/hint"
-                    android:inputType="textPersonName"
-                    android:textSize="15sp">
-
-                    <requestFocus />
-                </EditText>
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="15dp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight=".80"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnshow"
-                    android:layout_width="139dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/custom_btn"
-                    android:text="@string/show"
-                    android:textColor="@color/barText"
-                    android:textStyle="bold"
-                    android:theme="@style/SpecialButton" />
-
-                <Space
-                    android:layout_width="13dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/btndl"
-                    android:layout_width="139dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".23"
-                    android:background="@drawable/custom_btn"
-                    android:text="@string/past"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:theme="@style/SpecialButton" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <com.google.android.ads.nativetemplates.TemplateView
-            android:id="@+id/my_template"
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:visibility="invisible"
-            app:gnt_template_type="@layout/gnt_medium_template_view" />
+            android:id="@+id/my_text_field2"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    </LinearLayout>
-</ScrollView>
+    <Button
+        android:id="@+id/btnshow"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#1dd01d"
+        android:text="@string/show"
+        android:textColor="@color/barText"
+        android:textStyle="bold"
+        android:theme="@style/SpecialButton"
+        app:layout_constraintEnd_toStartOf="@+id/btndl"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_text_field" />
+
+    <Button
+        android:id="@+id/btndl"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#1dd01d"
+        android:text="@string/past"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:theme="@style/SpecialButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnshow"
+        app:layout_constraintTop_toBottomOf="@+id/my_text_field" />
+
+    <com.google.android.ads.nativetemplates.TemplateView
+        android:id="@+id/my_template"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:gnt_template_type="@layout/gnt_medium_template_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnshow" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

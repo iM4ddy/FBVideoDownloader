@@ -72,8 +72,6 @@ public class MainActivity extends ActivityManagePermission {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         //Rating Dialog
         final RatingDialog ratingDialog = new RatingDialog.Builder(this)
                 .threshold(4)
@@ -96,19 +94,6 @@ public class MainActivity extends ActivityManagePermission {
         manager.createNotificationChannel(channel);
         }
 
-        // rating topic firebase notification
-        FirebaseMessaging.getInstance().subscribeToTopic("rating")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Successful";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
-                        //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                        ratingDialog.show();
-                    }
-                });
         // open topic firebase notification
         FirebaseMessaging.getInstance().subscribeToTopic("open")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -506,7 +491,7 @@ public class MainActivity extends ActivityManagePermission {
                     }
                 });
             }
-        }, 200, 200, TimeUnit.SECONDS);
+        }, 180, 180, TimeUnit.SECONDS);
     }
 
     @Override

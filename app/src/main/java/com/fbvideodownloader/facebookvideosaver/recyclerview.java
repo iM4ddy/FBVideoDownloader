@@ -162,6 +162,8 @@ public class recyclerview extends Fragment {
 
         }
 
+
+
         RecyclerView.Adapter mAdapter = new MyAdapter(getActivity(), jData);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
