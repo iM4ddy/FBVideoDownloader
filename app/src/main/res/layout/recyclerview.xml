@@ -11,12 +11,12 @@
 
     <com.google.android.ads.nativetemplates.TemplateView
         android:id="@+id/my_template_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_width="406dp"
+        android:layout_height="144dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="5dp"
         android:visibility="gone"
         app:gnt_template_type="@layout/gnt_small_template_view" />
 
@@ -25,13 +25,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/my_template_2"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical|center_horizontal"
         android:text="No downloads!"
         android:textAllCaps="true"
-        android:textColor="#575555"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textColor="#8E575555"
+        android:textSize="20sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"

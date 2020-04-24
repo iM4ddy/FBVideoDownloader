@@ -358,6 +358,14 @@ public class MainActivity extends ActivityManagePermission {
                 startActivity(new Intent(MainActivity.this, help.class));
                 return true;
 
+            case R.id.item5:
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://developer?id=Xtreem+Inc.")));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/developer?id=Xtreem+Inc.")));
+                }
+                return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -477,7 +485,7 @@ public class MainActivity extends ActivityManagePermission {
     public void onStart() {
         super.onStart();
         Log.d("mainlife", "onStart");
-        // Ad Every 3.3 Minutes
+        // Ad Every 150 sec
         scheduler = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
@@ -491,7 +499,7 @@ public class MainActivity extends ActivityManagePermission {
                     }
                 });
             }
-        }, 180, 180, TimeUnit.SECONDS);
+        }, 150, 180, TimeUnit.SECONDS);
     }
 
     @Override

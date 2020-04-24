@@ -10,6 +10,12 @@
                 android:title="How to Download"
                 android:icon="@drawable/ic_help_black_24dp"
                 app:showAsAction="never" />
+            <item
+                android:id="@+id/item5"
+                android:orderInCategory="100"
+                android:title="More Apps"
+                android:icon="@drawable/ic_apps_black_24dp"
+                app:showAsAction="never" />
 
             <item
                 android:id="@+id/item1"
