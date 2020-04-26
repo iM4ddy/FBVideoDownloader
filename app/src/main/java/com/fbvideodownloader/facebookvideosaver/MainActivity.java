@@ -410,12 +410,6 @@ public class MainActivity extends ActivityManagePermission {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
     public void onBackPressed() {
 
         // double click to exit

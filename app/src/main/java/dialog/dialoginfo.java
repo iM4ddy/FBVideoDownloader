@@ -114,7 +114,7 @@ public class dialoginfo extends DialogFragment{
             public void onClick(View v) {
 
                 admob.ad_count++;
-                if(MainActivity.interstitial.isLoaded() && admob.ad_count >= 5){
+                if(admob.ad_count >= 5){
                     MainActivity.interstitial.show();
                     admob.ad_count = 0;
                 }

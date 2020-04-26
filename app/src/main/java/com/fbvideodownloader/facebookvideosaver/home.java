@@ -4,9 +4,6 @@ package com.fbvideodownloader.facebookvideosaver;
  * Created by mac on 25/01/16.
  */
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.ArrayList;
 
 import android.app.ProgressDialog;
 import android.content.ClipData;
@@ -26,7 +23,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,14 +31,10 @@ import dialog.dialoginfo;
 import func.reg;
 
 import com.google.android.ads.nativetemplates.TemplateView;
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.loopj.android.http.*;
 
 import org.json.JSONException;
@@ -54,7 +46,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class home extends Fragment {
 
-    private String html = "", desc = "", imagina = "", url = "" , video = "" , videoArray="";
+    private String html = "", url = "" , video = "";
     private TextInputEditText textField;
     private Button past , btnshow ;
     private TextView textView;
@@ -82,7 +74,7 @@ public class home extends Fragment {
 
 
         prgDialog = new ProgressDialog(getActivity());
-        prgDialog.setCancelable(true);
+        prgDialog.setCancelable(false);
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -157,7 +149,7 @@ public class home extends Fragment {
 
                 }else{
 
-                    showContent( textField);
+                    showContent(textField);
 
                 }
                 mLastClickTime = SystemClock.elapsedRealtime();
@@ -213,25 +205,25 @@ public class home extends Fragment {
                     AsyncHttpClient client = new AsyncHttpClient();
                         client.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36");
                         client.get(url, new TextHttpResponseHandler() {
+
                             @Override
                             public void onStart() {
-
                                 // Initiated the request
-                                    prgDialog.setMessage("Loading...");
-                                    prgDialog.show();
+                                prgDialog.setMessage("Loading...");
+                                prgDialog.show();
                             }
 
 
                             @Override
                             public void onFinish() {
                                 // Completed the request (either success or failure)
-                                prgDialog.hide();
+                                prgDialog.dismiss();
                             }
 
                             @Override
                             public void onFailure(int arg0, Header[] arg1, String arg2, Throwable arg3) {
                                 // TODO Auto-generated method stub
-                                prgDialog.hide();
+                                prgDialog.dismiss();
                                 Toast.makeText(getActivity(), "Conexion Faild!", Toast.LENGTH_LONG).show();
 
                             }
@@ -254,80 +246,10 @@ public class home extends Fragment {
                                     facebook();
 
                                 }
-
                             }
                         });
 
             }
-    }
-
-
-    private void asynHttp(final String web){
-
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36");
-        client.get(web, new TextHttpResponseHandler() {
-            @Override
-            public void onStart() {
-                // Initiated the request
-
-                prgDialog.setMessage("getting video...");
-                prgDialog.show();
-
-            }
-
-            @Override
-            public void onFinish() {
-                // Completed the request (either success or failure)
-                prgDialog.hide();
-            }
-
-            @Override
-            public void onFailure(int arg0, Header[] arg1, String arg2, Throwable arg3) {
-                // TODO Auto-generated method stub
-                prgDialog.hide();
-                Toast.makeText(getActivity(), "Conexion Faild!", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onSuccess(int arg0, Header[] arg1, String responseBody) {
-                // TODO Auto-generated method stub
-
-                html = responseBody;
-
-
-                if(web.contains("savedeo.com")){
-
-                    video = reg.getBack(html , "href=\"(.+?\\.mp4)\"");
-
-                    mDialog();
-
-                } else {
-
-                    String powerJS = reg.getBack(html , "data-config=\"(.+?)\"");
-
-                    if (!func.json.jsonObject(powerJS , "video_url").isEmpty()){
-
-                        asynHttp("https://savedeo.com/download?url="+url);
-
-                    }else if(!func.json.jsonObject(powerJS , "vmap_url").isEmpty()){
-
-                        try{
-
-                            video = reg.getBack(func.httpRequest.get(func.json.jsonObject(powerJS , "vmap_url")), "<MediaFile>[^<]+<\\!\\[CDATA\\[([^\\]]+)");
-                            mDialog();
-
-                        }catch(Exception e){
-
-                        }
-
-                    }
-
-                }
-
-            }
-        });
-
     }
 
     @Override
@@ -347,19 +269,10 @@ public class home extends Fragment {
 
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
 
     public void facebook(){
 
         String jsonVideo = escapeXml(reg.getBack(html, "\"([^\"]+)\" data-sigil=\"inlineVideo\""));
-
-        String jsonImage = escapeXml(reg.getBack(html, "data-store=\"([^\"]+imgsrc[^\"]+)\""));
-
-        String jGif = reg.getBack(html, "class=\"_4o54\".+?&amp;url=(.+?)&");
 
         try {
 
@@ -367,19 +280,8 @@ public class home extends Fragment {
                 JSONObject obj = new JSONObject(jsonVideo);
                 video = obj.getString("src");
 
-            }else if(!jGif.isEmpty()){
-
-                imagina = URLDecoder.decode(jGif, "UTF-8");
-
-            }else if(!jsonImage.isEmpty()){
-
-                JSONObject obj = new JSONObject(jsonImage);
-                imagina = obj.getString("imgsrc");
             }
-
         } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -408,5 +310,4 @@ public class home extends Fragment {
             Toast.makeText(getContext(), "There is No results try again with new Link!", Toast.LENGTH_LONG).show();
         }
     }
-
 }
