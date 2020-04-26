@@ -5,7 +5,7 @@
     android:id="@+id/fragg">
 
     <ProgressBar
-        android:id="@+id/mprogress"
+        android:id="@+id/mprogress2"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="2dp"

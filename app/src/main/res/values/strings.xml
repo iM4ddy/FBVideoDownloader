@@ -6,15 +6,14 @@
     <string name="alert">Please make sure you are Adding a correct URL.</string>
     <string name="hint">Paste Facebook video link here</string>
     <string name="cancel">Cancel</string>
-    <string name="savevideo">Save Video</string>
+    <string name="savevideo">DOWNLOAD</string>
     <string name="past">DOWNLOAD</string>
     <string name="guide">Guide</string>
     <string name="show">PASTE LINK</string>
     <string name="copytext">Copy Text</string>
     <string name="rateus">Rate Us!</string>
     <string name="moreapp">More APP</string>
-    <string name="saveimage">Save Image</string>
-    <string name="stream">STREAM</string>
+    <string name="stream">WATCH</string>
     <string name="sharethisapp">Share This APP</string>
     <string name="dstart">Download Start ...</string>
     <string name="play">Play</string>

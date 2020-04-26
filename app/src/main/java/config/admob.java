@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 
 public class admob {
 
+    public static int ad_count = 0;
+
     public static String publisherID = "pub-5260818953194377";
 
      /* my real banner ad */

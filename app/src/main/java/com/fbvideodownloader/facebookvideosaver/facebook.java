@@ -3,7 +3,6 @@ package com.fbvideodownloader.facebookvideosaver;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.KeyEvent;
@@ -14,7 +13,6 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -23,7 +21,7 @@ import dialog.dialoginfo;
 
 public class facebook extends Fragment {
 
-    private String url = "" , video = "" , videoArray="" ,imagina = "" ,desc = "";
+    private String url = "" , video = "" , videoArray="";
     private ProgressBar mprogress;
     WebView webo;
     // variable to track event time
@@ -38,7 +36,7 @@ public class facebook extends Fragment {
 //        linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
 //        config.admob.admobBannerCall(getActivity(), linearlayout);
         webo = (WebView) rootView.findViewById(R.id.webView);
-        mprogress = (ProgressBar)rootView.findViewById(R.id.mprogress);
+        mprogress = (ProgressBar)rootView.findViewById(R.id.mprogress2);
 
         mprogress.setProgress(0);
         mprogress.setMax(100);
@@ -283,13 +281,11 @@ public class facebook extends Fragment {
 
         if(pathvideo.contains(".mp4")){
 
-            imagina = "";
             video = pathvideo;
 
         }else{
 
             video = "";
-            imagina = pathvideo;
         }
 
         mDialog();
@@ -326,16 +322,13 @@ public class facebook extends Fragment {
 
     public void mDialog(){
 
-        if(!video.isEmpty() || !imagina.isEmpty() || !videoArray.isEmpty()){
+        if(!video.isEmpty() || !videoArray.isEmpty()){
 
             FragmentManager fm = getActivity().getSupportFragmentManager();
             dialoginfo info = new dialoginfo();
             Bundle args = new Bundle();
             args.putString("videoArray", videoArray);
             args.putString("video", video);
-            args.putString("image", imagina);
-            if(desc.length() > 300){desc=desc.substring(0,300);}
-            args.putString("desc", desc);
             info.setArguments(args);
             info.show(fm, "fragment_info");
 

@@ -55,16 +55,13 @@ import cz.msebera.android.httpclient.Header;
 public class home extends Fragment {
 
     private String html = "", desc = "", imagina = "", url = "" , video = "" , videoArray="";
-    TextInputEditText textField;
-    Button past , btnshow , btnsharethisapp, btnrateus, btnhelp, btnmoreapp;
-    TextView textView;
-    ProgressDialog prgDialog;
-    ArrayList<String> jVideo , jQuality;
+    private TextInputEditText textField;
+    private Button past , btnshow ;
+    private TextView textView;
+    private ProgressDialog prgDialog;
     // variable to track event time
     private long mLastClickTime = 0;
-    ViewPager viewPager;
-    private int ad_count = 0;
-    private InterstitialAd interstitialAd;
+    private ViewPager viewPager;
 
 
     @Override
@@ -131,11 +128,7 @@ public class home extends Fragment {
 
                         ClipData.Item item = clip.getItemAt(0);
                         textField.setText(func.reg.getBack(item.getText().toString(), "(http(s)?:\\/\\/(.+?\\.)?[^\\s\\.]+\\.[^\\s\\/]{1,9}(\\/[^\\s]+)?)"));
-                        ad_count++;
-                        if(clip.toString().contains("www.facebook.com") && interstitialAd.isLoaded() && ad_count >= 3){
-                            interstitialAd.show();
-                            ad_count = 0;
-                        }
+
 
 
                     }else{
@@ -172,21 +165,6 @@ public class home extends Fragment {
         });
 
 
-
-        //=====Admob Ads=====//
-
-        // Interstitial
-        MobileAds.initialize(getContext());
-        interstitialAd = new InterstitialAd(getContext());
-        interstitialAd.setAdUnitId(admob.Interstitial);
-        interstitialAd.loadAd(new AdRequest.Builder().build());
-        interstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-                interstitialAd.loadAd(new AdRequest.Builder().build());
-            }
-        });
         // Native Ads
 
         AdLoader.Builder builder = new AdLoader.Builder(getContext(), admob.native_unit);
@@ -221,9 +199,6 @@ public class home extends Fragment {
         }else{
 
                 video = "";
-                imagina = "";
-                desc = "";
-                videoArray = "";
 
                     // correct url structure
                         if(url.contains("facebook")){
@@ -419,17 +394,13 @@ public class home extends Fragment {
 
     public void mDialog(){
 
-        if(!video.isEmpty() || !imagina.isEmpty() || !videoArray.isEmpty()){
+        if(!video.isEmpty() ){
 
             FragmentManager fm = getActivity().getSupportFragmentManager();
             dialoginfo info = new dialoginfo();
             Bundle args = new Bundle();
-            args.putString("videoArray", videoArray);
             video.replace("\\","");
             args.putString("video", video.replace("\\",""));
-            args.putString("image", imagina);
-            if(desc.length() > 300){desc=desc.substring(0,300);}
-            args.putString("desc", desc);
             info.setArguments(args);
             info.show(fm, "fragment_info");
 
