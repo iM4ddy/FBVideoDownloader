@@ -13,23 +13,21 @@ public class admob {
 
     public static String publisherID = "pub-5260818953194377";
 
-     /* my real banner ad */
-    //public static String admBanner = "ca-app-pub-5260818953194377/7856356130";
+     /* ============= my real ads ============= */
 
-    /* test banner ad */
-    public static String admBanner = "ca-app-pub-3940256099942544/6300978111";
+    public static String admBanner = "ca-app-pub-5260818953194377/7856356130";
 
-    /* my real int ad */
-	//public static String Interstitial = "ca-app-pub-5260818953194377/2607898889";
+    public static String Interstitial = "ca-app-pub-5260818953194377/2607898889";
 
-	/* test int ad */
+    public static String native_unit = "ca-app-pub-5260818953194377/7668653871";
+
+    /* ============= my Test ads ============= */
+
+    /*public static String admBanner = "ca-app-pub-3940256099942544/6300978111";
+
     public static String Interstitial = "ca-app-pub-3940256099942544/1033173712";
 
-    /* my real Native ad */
-    //public static String native_unit = "ca-app-pub-5260818953194377/7668653871";
-
-    /* test native ad */
-    public static String native_unit = "ca-app-pub-3940256099942544/2247696110";
+    public static String native_unit = "ca-app-pub-3940256099942544/2247696110";*/
 
 
     public static String privacy_policy_url ="https://sites.google.com/view/xtreemapps/home";

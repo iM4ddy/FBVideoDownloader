@@ -109,6 +109,14 @@ public class dialoginfo extends DialogFragment{
 
         }
 
+        stream.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                func.player.mPlayerStream(video , getActivity());
+            }
+        });
+
         saveVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

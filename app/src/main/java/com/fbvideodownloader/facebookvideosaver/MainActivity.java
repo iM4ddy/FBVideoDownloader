@@ -15,6 +15,7 @@ import android.os.Handler;
 import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
@@ -23,8 +24,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.InterstitialAd;
@@ -302,6 +306,7 @@ public class MainActivity extends ActivityManagePermission {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
@@ -472,7 +477,6 @@ public class MainActivity extends ActivityManagePermission {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("mainlife", "onDestroy");
-
     }
 
     @Override
@@ -493,7 +497,7 @@ public class MainActivity extends ActivityManagePermission {
                     }
                 });
             }
-        }, 150, 180, TimeUnit.SECONDS);
+        }, 200, 200, TimeUnit.SECONDS);
     }
 
     @Override
