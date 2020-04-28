@@ -51,9 +51,6 @@ public class recyclerview extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.recyclerview, container, false);
 
-        /*linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
-        config.admob.admobBannerCall(getActivity(), linearlayout);*/
-
         folderName = getResources().getString(R.string.foldername);
 
         mRecyclerView = (RecyclerView)rootView.findViewById(R.id.my_recycler_view);
@@ -111,7 +108,6 @@ public class recyclerview extends Fragment {
                     displayfiles(file, jData, mRecyclerView, getActivity());
                 }
 
-
             }else{
 
                 displayfiles(file, jData, mRecyclerView, getActivity());
@@ -161,12 +157,9 @@ public class recyclerview extends Fragment {
             }
 
         }
-
-
-
         RecyclerView.Adapter mAdapter = new MyAdapter(getActivity(), jData);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-
     }
+
 }

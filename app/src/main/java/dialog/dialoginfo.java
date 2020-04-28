@@ -122,8 +122,8 @@ public class dialoginfo extends DialogFragment{
             public void onClick(View v) {
 
                 admob.ad_count++;
-                if(admob.ad_count >= 5){
-                    MainActivity.interstitial.show();
+                if(admob.ad_count >= 4){
+                    MainActivity.displayInterstitial();
                     admob.ad_count = 0;
                 }
 
@@ -166,7 +166,6 @@ public class dialoginfo extends DialogFragment{
             public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
 
                 TemplateView templateView = rootView.findViewById(R.id.my_template_4);
-                templateView.setVisibility(View.VISIBLE);
                 templateView.setNativeAd(unifiedNativeAd);
 
             }

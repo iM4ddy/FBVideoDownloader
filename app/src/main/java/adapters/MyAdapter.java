@@ -49,7 +49,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private TextView  title;
         private ImageView imagevi , imagePlayer;
         private ImageButton menu;
-        private Button play,share,delete;
         private CardView cardView;
 
 
@@ -151,9 +150,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 }
 
             }else if(maid[1] == v.getId()){
-
                 func.player.mPlayer(vi.getFilePath(), activity);
-
             }
 
 
@@ -205,21 +202,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
                 }
 
-                subStringTitle(holder.title , jpast.getFileName());
-
-                // display audio
-            }else if(!reg.getBack(jpast.getFilePath(), "((\\.3ga|\\.aac|\\.aif|\\.aifc|\\.aiff|\\.amr|\\.au|\\.aup|\\.caf|\\.flac|\\.gsm|\\.kar|\\.m4a|\\.m4p|\\.m4r|\\.mid|\\.midi|\\.mmf|\\.mp2|\\.mp3|\\.mpga|\\.ogg|\\.oma|\\.opus|\\.qcp|\\.ra|\\.ram|\\.wav|\\.wma|\\.xspf)$)").
-                    isEmpty()){
-
-                holder.imagePlayer.setVisibility(View.GONE);
-
-                subStringTitle(holder.title, jpast.getFileName());
-
-                // display images
-            }else if(!reg.getBack(jpast.getFilePath(), "((\\.jpg|\\.png|\\.gif|\\.jpeg|\\.bmp)$)").isEmpty()){
-
-                holder.imagePlayer.setVisibility(View.GONE);
-                Picasso.get().load(file).into(holder.imagevi);
                 subStringTitle(holder.title , jpast.getFileName());
 
             }

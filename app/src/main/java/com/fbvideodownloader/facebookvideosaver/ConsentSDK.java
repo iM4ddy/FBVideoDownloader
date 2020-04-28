@@ -361,31 +361,6 @@ public class ConsentSDK {
                                     MainActivity.requestInterstitial(MainActivity.context);
                                 }catch (Exception ex){ }
 
-                                try {
-                                    if(((LinearLayout) help.linearlayout).getChildCount() > 0)
-                                        ((LinearLayout) help.linearlayout).removeAllViews();
-                                    admob.admobBannerCall(help.context,help.linearlayout);
-
-                                }catch (Exception ex){ }
-                                /*try {
-                                    if(((LinearLayout) home.linearlayout).getChildCount() > 0)
-                                        ((LinearLayout) home.linearlayout).removeAllViews();
-                                    admob.admobBannerCall(MainActivity.context,home.linearlayout);
-
-                                }catch (Exception ex){ }*/
-                                /*try {
-                                    if(((LinearLayout) recyclerview.linearlayout).getChildCount() > 0)
-                                        ((LinearLayout) recyclerview.linearlayout).removeAllViews();
-                                    admob.admobBannerCall(MainActivity.context,recyclerview.linearlayout);
-
-                                }catch (Exception ex){ }*/
-//                                try {
-//                                    if(((LinearLayout) facebook.linearlayout).getChildCount() > 0)
-//                                        ((LinearLayout) facebook.linearlayout).removeAllViews();
-//                                    admob.admobBannerCall(MainActivity.context,facebook.linearlayout);
-//
-//                                }catch (Exception ex){ }
-
                                 break;
                             default:
                                 consentIsPersonalized();
@@ -393,31 +368,6 @@ public class ConsentSDK {
                                 try {
                                     MainActivity.requestInterstitial(MainActivity.context);
                                 }catch (Exception ex){ }
-
-                                try {
-                                    if(((LinearLayout) help.linearlayout).getChildCount() > 0)
-                                        ((LinearLayout) help.linearlayout).removeAllViews();
-                                    admob.admobBannerCall(help.context,help.linearlayout);
-
-                                }catch (Exception ex){ }
-                                /*try {
-                                    if(((LinearLayout) home.linearlayout).getChildCount() > 0)
-                                        ((LinearLayout) home.linearlayout).removeAllViews();
-                                    admob.admobBannerCall(MainActivity.context,home.linearlayout);
-
-                                }catch (Exception ex){ }*/
-                                /*try {
-                                    if(((LinearLayout) recyclerview.linearlayout).getChildCount() > 0)
-                                        ((LinearLayout) recyclerview.linearlayout).removeAllViews();
-                                    admob.admobBannerCall(MainActivity.context,recyclerview.linearlayout);
-
-                                }catch (Exception ex){ }*/
-//                                try {
-//                                    if(((LinearLayout) facebook.linearlayout).getChildCount() > 0)
-//                                        ((LinearLayout) facebook.linearlayout).removeAllViews();
-//                                    admob.admobBannerCall(MainActivity.context,facebook.linearlayout);
-//
-//                                }catch (Exception ex){ }
                                 break;
                         }
                         // Callback

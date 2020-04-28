@@ -11,35 +11,25 @@ public class admob {
 
     public static int ad_count = 0;
 
-    public static String publisherID = "pub-5260818953194377";
+    public static String publisherID = "pub-6497675273236775";
 
      /* ============= my real ads ============= */
 
-    public static String admBanner = "ca-app-pub-5260818953194377/7856356130";
+    public static String Interstitial = "ca-app-pub-6497675273236775/3290720318";
 
-    public static String Interstitial = "ca-app-pub-5260818953194377/2607898889";
+    public static String native_unit = "ca-app-pub-6497675273236775/7757698496";
 
-    public static String native_unit = "ca-app-pub-5260818953194377/7668653871";
+    public static String rewarded_ad = "ca-app-pub-6497675273236775/6444616820";
 
     /* ============= my Test ads ============= */
 
-    /*public static String admBanner = "ca-app-pub-3940256099942544/6300978111";
+    /*public static String Interstitial = "ca-app-pub-3940256099942544/1033173712";
 
-    public static String Interstitial = "ca-app-pub-3940256099942544/1033173712";
+    public static String native_unit = "ca-app-pub-3940256099942544/2247696110";
 
-    public static String native_unit = "ca-app-pub-3940256099942544/2247696110";*/
+    public static String rewarded_ad = "ca-app-pub-3940256099942544/5224354917";*/
 
 
     public static String privacy_policy_url ="https://sites.google.com/view/xtreemapps/home";
-	
-	public static void admobBannerCall(Activity acitivty , LinearLayout linerlayout){
-		
-        AdView adView = new AdView(acitivty);
-        adView.setAdUnitId(admBanner);
-        adView.setAdSize(AdSize.BANNER);
-        adView.loadAd(ConsentSDK.getAdRequest(acitivty));
-        linerlayout.addView(adView);
-
-	}
 	
 }

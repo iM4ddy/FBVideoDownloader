@@ -67,29 +67,7 @@ public class player {
 			intent.setDataAndType(Uri.fromFile(file), "audio/*");
 			activity.startActivity(intent);
 
-		}else if(!reg.getBack(filepath, "((\\.jpg|\\.png|\\.gif|\\.jpeg|\\.bmp)$)").isEmpty()){
-
-			if(Build.VERSION.SDK_INT>=24){
-				try{
-					Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
-					m.invoke(null);
-				}catch(Exception ex){
-					ex.printStackTrace();
-				}
-			}
-			try{
-				Intent intent = new Intent();
-				intent.setAction(Intent.ACTION_VIEW);
-				intent.setDataAndType(Uri.parse("file:///"+Uri.fromFile(file).getPath()) , "image/*");
-				activity.startActivity(intent);
-//				Toast.makeText(activity , ""+Uri.parse("file:///" + Environment.getExternalStorageDirectory() + "/WhatsApp/Media/.Statuses/x.jpg \n "
-//						+Uri.fromFile(file).getPath()) , Toast.LENGTH_LONG).show();
-			}catch (Exception e){
-				Toast.makeText(activity , "Sorry. We can't Display Images. try again" , Toast.LENGTH_LONG).show();
-			}
-
 		}
-
 
 	}
 

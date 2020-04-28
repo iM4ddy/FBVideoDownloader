@@ -13,6 +13,11 @@ import android.os.Environment;
 import android.os.Handler;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdCallback;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -55,11 +60,12 @@ import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
 
 public class MainActivity extends ActivityManagePermission {
 
-    private int mCounte = 3;
+    private int mCounte = 7;
     public static InterstitialAd interstitial;
     boolean doubleBackToExitPressedOnce = false;
     public static String filepath = "";
     public ConsentSDK consentSDK;
+    RewardedAd rewardedAd;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -69,8 +75,7 @@ public class MainActivity extends ActivityManagePermission {
     public static Activity context;
     SharedPreferences sharedPref;
     ScheduledExecutorService scheduler;
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +85,7 @@ public class MainActivity extends ActivityManagePermission {
         final RatingDialog ratingDialog = new RatingDialog.Builder(this)
                 .threshold(4)
                 .session(3)
+                .title("We'd appreciate if you can give us 5 stars")
                 .icon(getDrawable(R.drawable.star))
                 .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
                     @Override
@@ -109,12 +115,13 @@ public class MainActivity extends ActivityManagePermission {
                         }
                     }
                 });
+        // Rewarded ad
+        rewardedAd = new RewardedAd(this, admob.rewarded_ad);
 
+        rewardedAd.loadAd(new AdRequest.Builder().build(), new RewardedAdLoadCallback());
 
-        if ((admob.admBanner != null && admob.admBanner.length() >= 2) &&
-                (admob.Interstitial != null && admob.Interstitial.length() >= 2)) {
-            if( !(admob.admBanner.substring(admob.admBanner.length() - 2).equals("11")) &&
-                    !(admob.Interstitial.substring(admob.Interstitial.length() - 2).equals("12"))){}
+        if (admob.Interstitial != null && admob.Interstitial.length() >= 2) {
+            if( !(admob.Interstitial.substring(admob.Interstitial.length() - 2).equals("12"))){}
             else {
                 try {
                     if( AeSHAOne.SHA1(getPackageName()) == AeSHAOne.pkey || AeSHAOne.SHA1(getPackageName()).equals(AeSHAOne.pkey)) setContentView(R.layout.activity_main);
@@ -185,9 +192,10 @@ public class MainActivity extends ActivityManagePermission {
                     // display interstitial
                     if (mCounte >= Integer.parseInt(mCounter)) {
 
-                        displayInterstitial();
-
-                        mCounte = 0;
+                        if (interstitial.isLoaded()) {
+                            interstitial.show();
+                            mCounte = 0;
+                        }
                     }
 
                 }
@@ -200,9 +208,10 @@ public class MainActivity extends ActivityManagePermission {
                     // display interstitial
                     if (mCounte >= Integer.parseInt(mCounter)) {
 
-                        displayInterstitial();
-
-                        mCounte = 0;
+                        if (interstitial.isLoaded()) {
+                            interstitial.show();
+                            mCounte = 0;
+                        }
                     }
 
                 }
@@ -220,9 +229,10 @@ public class MainActivity extends ActivityManagePermission {
                     // display interstitial
                     if (mCounte >= Integer.parseInt(mCounter)) {
 
-                        displayInterstitial();
-
-                        mCounte = 0;
+                        if (interstitial.isLoaded()) {
+                            interstitial.show();
+                            mCounte = 0;
+                        }
                     }
 
                 }
@@ -330,6 +340,7 @@ public class MainActivity extends ActivityManagePermission {
 //                }
                 final RatingDialog ratingDialog = new RatingDialog.Builder(this)
                         .threshold(4)
+                        .title("We'd appreciate if you can give us 5 stars")
                         .icon(getDrawable(R.drawable.star))
                         .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
                             @Override
@@ -344,10 +355,6 @@ public class MainActivity extends ActivityManagePermission {
             case R.id.item2:
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
-
-//            case R.id.setting_guide:
-//                startActivity(new Intent(MainActivity.this, help.class));
-//                return true;
 
             case R.id.item1:
                 Intent i = new Intent(Intent.ACTION_SEND);
@@ -404,13 +411,20 @@ public class MainActivity extends ActivityManagePermission {
         }
     }
 
-
-    public void displayInterstitial() {
-        if (getResources().getString(R.string.onoff_Interstitial).toLowerCase(Locale.ENGLISH).equals("on")) {
-
+    public static void displayInterstitial() {
             if (interstitial.isLoaded()) {
                 interstitial.show();
             }
+        }
+
+    public void displayRewarded() {
+        if(rewardedAd.isLoaded()){
+            rewardedAd.show(this, new RewardedAdCallback() {
+                @Override
+                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                    scheduler.shutdown();
+                }
+            });
         }
     }
 
@@ -491,19 +505,16 @@ public class MainActivity extends ActivityManagePermission {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(interstitial.isLoaded()){
-                            interstitial.show();
-                        }
+                        displayRewarded();
                     }
                 });
             }
-        }, 200, 200, TimeUnit.SECONDS);
+        }, 120, 120, TimeUnit.SECONDS);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        scheduler.shutdown();
         Log.d("mainlife", "onStop");
     }
 

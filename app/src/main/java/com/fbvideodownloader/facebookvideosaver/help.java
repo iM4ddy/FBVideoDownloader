@@ -6,8 +6,16 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.google.android.ads.nativetemplates.TemplateView;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
+
+import config.admob;
 
 public class help extends AppCompatActivity {
 
@@ -20,14 +28,27 @@ public class help extends AppCompatActivity {
         setContentView(R.layout.activity_help);
 
         context = this;
-        linearlayout = (LinearLayout) findViewById(R.id.unitads);
-        config.admob.admobBannerCall(this, linearlayout);
 
         actionBar= this.getActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         this.setTitle("How To Download");
+
+        AdLoader.Builder builder = new AdLoader.Builder(this, admob.native_unit);
+        builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
+            @Override
+            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
+
+                TemplateView templateView = findViewById(R.id.my_template_5);
+                templateView.setVisibility(View.VISIBLE);
+                templateView.setNativeAd(unifiedNativeAd);
+            }
+        });
+
+        AdLoader adLoader = builder.build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adLoader.loadAd(adRequest);
 
     }
 
@@ -47,17 +68,4 @@ public class help extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-    /*@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // app icon in action bar clicked; goto parent activity.
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }*/
 }

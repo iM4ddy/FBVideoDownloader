@@ -82,7 +82,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5260818953194377~5226042187"/>
+            android:value="ca-app-pub-6497675273236775~3486161437"/>
 
         <activity android:name="com.fbvideodownloader.facebookvideosaver.help" />
         <service

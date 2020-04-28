@@ -62,10 +62,6 @@ public class home extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.home, container, false);
         viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
-
-        /*linearlayout = (LinearLayout)rootView.findViewById(R.id.unitads);
-        config.admob.admobBannerCall(getActivity(), linearlayout);*/
-
         textField = (TextInputEditText) rootView.findViewById(R.id.my_text_field2);
         past = (Button)rootView.findViewById(R.id.btnshow);
         btnshow = (Button)rootView.findViewById(R.id.btndl);
