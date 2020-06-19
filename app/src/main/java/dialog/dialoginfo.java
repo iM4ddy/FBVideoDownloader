@@ -11,10 +11,6 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.DialogFragment;
-import androidx.core.content.ContextCompat;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,32 +19,25 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 
 import com.fbvideodownloader.facebookvideosaver.MainActivity;
 import com.fbvideodownloader.facebookvideosaver.R;
 import com.google.android.ads.nativetemplates.TemplateView;
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
-import com.squareup.picasso.Picasso;
 import com.thin.downloadmanager.DefaultRetryPolicy;
 import com.thin.downloadmanager.DownloadRequest;
 import com.thin.downloadmanager.DownloadStatusListenerV1;
 import com.thin.downloadmanager.RetryPolicy;
 import com.thin.downloadmanager.ThinDownloadManager;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.File;
 
@@ -112,7 +101,6 @@ public class dialoginfo extends DialogFragment{
         stream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 func.player.mPlayerStream(video , getActivity());
             }
         });
@@ -120,12 +108,7 @@ public class dialoginfo extends DialogFragment{
         saveVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                admob.ad_count++;
-                if(admob.ad_count >= 4){
                     MainActivity.displayInterstitial();
-                    admob.ad_count = 0;
-                }
 
                 if(Build.VERSION.SDK_INT >= 23){
 

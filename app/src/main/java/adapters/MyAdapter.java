@@ -1,35 +1,32 @@
 package adapters;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.cardview.widget.CardView;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.PopupMenu;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.fbvideodownloader.facebookvideosaver.MainActivity;
 import com.fbvideodownloader.facebookvideosaver.R;
 import com.fbvideodownloader.facebookvideosaver.dialog_rename;
-import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
 import net.rdrei.android.dirchooser.DirectoryChooserConfig;
 
 import java.io.File;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import func.reg;
@@ -152,7 +149,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             }else if(maid[1] == v.getId()){
                 func.player.mPlayer(vi.getFilePath(), activity);
             }
-
 
         }
 

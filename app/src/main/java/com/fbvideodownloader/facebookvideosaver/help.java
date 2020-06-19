@@ -22,6 +22,7 @@ public class help extends AppCompatActivity {
     ActionBar actionBar;
     public static LinearLayout linearlayout;
     public static Activity context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,7 @@ public class help extends AppCompatActivity {
 
         this.setTitle("How To Download");
 
-        AdLoader.Builder builder = new AdLoader.Builder(this, admob.native_unit);
+        /*AdLoader.Builder builder = new AdLoader.Builder(this, admob.native_unit);
         builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
             @Override
             public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
@@ -48,7 +49,7 @@ public class help extends AppCompatActivity {
 
         AdLoader adLoader = builder.build();
         AdRequest adRequest = new AdRequest.Builder().build();
-        adLoader.loadAd(adRequest);
+        adLoader.loadAd(adRequest);*/
 
     }
 

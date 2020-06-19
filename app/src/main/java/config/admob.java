@@ -15,19 +15,19 @@ public class admob {
 
      /* ============= my real ads ============= */
 
-    public static String Interstitial = "ca-app-pub-6497675273236775/3290720318";
+    /*public static String Interstitial = "ca-app-pub-6497675273236775/3290720318";
 
     public static String native_unit = "ca-app-pub-6497675273236775/7757698496";
 
-    public static String rewarded_ad = "ca-app-pub-6497675273236775/6444616820";
+    public static String rewarded_ad = "ca-app-pub-6497675273236775/6444616820";*/
 
     /* ============= my Test ads ============= */
 
-    /*public static String Interstitial = "ca-app-pub-3940256099942544/1033173712";
+    public static String Interstitial = "ca-app-pub-3940256099942544/1033173712";
 
     public static String native_unit = "ca-app-pub-3940256099942544/2247696110";
 
-    public static String rewarded_ad = "ca-app-pub-3940256099942544/5224354917";*/
+    public static String rewarded_ad = "ca-app-pub-3940256099942544/5224354917";
 
 
     public static String privacy_policy_url ="https://sites.google.com/view/xtreemapps/home";

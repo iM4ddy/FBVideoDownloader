@@ -22,13 +22,13 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin">
 
-            <com.google.android.ads.nativetemplates.TemplateView
+            <!--<com.google.android.ads.nativetemplates.TemplateView
                 android:id="@+id/my_template_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:visibility="gone"
-                app:gnt_template_type="@layout/gnt_small_template_view" />
+                android:visibility="visible"
+                app:gnt_template_type="@layout/gnt_small_template_view" />-->
 
             <TextView
                 android:layout_width="wrap_content"

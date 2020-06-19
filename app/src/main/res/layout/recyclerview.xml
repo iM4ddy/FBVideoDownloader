@@ -13,7 +13,7 @@
         android:id="@+id/my_template_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:gnt_template_type="@layout/gnt_small_template_view" />
 
     <TextView

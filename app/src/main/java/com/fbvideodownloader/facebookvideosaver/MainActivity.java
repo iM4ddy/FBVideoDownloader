@@ -14,6 +14,7 @@ import android.os.Handler;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdCallback;
@@ -60,12 +61,11 @@ import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
 
 public class MainActivity extends ActivityManagePermission {
 
-    private int mCounte = 7;
+    private int mCounte = 12;
     public static InterstitialAd interstitial;
     boolean doubleBackToExitPressedOnce = false;
     public static String filepath = "";
     public ConsentSDK consentSDK;
-    RewardedAd rewardedAd;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -116,9 +116,9 @@ public class MainActivity extends ActivityManagePermission {
                     }
                 });
         // Rewarded ad
-        rewardedAd = new RewardedAd(this, admob.rewarded_ad);
+        /*rewardedAd = new RewardedAd(this, admob.rewarded_ad);
 
-        rewardedAd.loadAd(new AdRequest.Builder().build(), new RewardedAdLoadCallback());
+        rewardedAd.loadAd(new AdRequest.Builder().build(), new RewardedAdLoadCallback());*/
 
         if (admob.Interstitial != null && admob.Interstitial.length() >= 2) {
             if( !(admob.Interstitial.substring(admob.Interstitial.length() - 2).equals("12"))){}
@@ -258,9 +258,7 @@ public class MainActivity extends ActivityManagePermission {
 
         // prepare interstitial
         if (getResources().getString(R.string.onoff_Interstitial).toLowerCase(Locale.ENGLISH).equals("on")) {
-
             requestInterstitial(this);
-
         }
 
     }
@@ -417,17 +415,6 @@ public class MainActivity extends ActivityManagePermission {
             }
         }
 
-    public void displayRewarded() {
-        if(rewardedAd.isLoaded()){
-            rewardedAd.show(this, new RewardedAdCallback() {
-                @Override
-                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-                    scheduler.shutdown();
-                }
-            });
-        }
-    }
-
     @Override
     public void onBackPressed() {
 
@@ -497,19 +484,6 @@ public class MainActivity extends ActivityManagePermission {
     public void onStart() {
         super.onStart();
         Log.d("mainlife", "onStart");
-        // Ad Every 150 sec
-        scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        displayRewarded();
-                    }
-                });
-            }
-        }, 120, 120, TimeUnit.SECONDS);
     }
 
     @Override
