@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Code-FBDownloader.iml" filepath="$PROJECT_DIR$/Code-FBDownloader.iml" group="FBDownloader" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Code.FBDownloader.iml" filepath="$PROJECT_DIR$/.idea/modules/Code.FBDownloader.iml" />
       <module fileurl="file://$PROJECT_DIR$/FBDownloader.iml" filepath="$PROJECT_DIR$/FBDownloader.iml" group="FBDownloader" />
       <module fileurl="file://$PROJECT_DIR$/app/FBDownloader-app.iml" filepath="$PROJECT_DIR$/app/FBDownloader-app.iml" group="FBDownloader/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="FBDownloader/app" />
-      <module fileurl="file://$PROJECT_DIR$/nativetemplates/nativetemplates.iml" filepath="$PROJECT_DIR$/nativetemplates/nativetemplates.iml" group="FBDownloader/nativetemplates" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FBDownloader.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FBDownloader.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/FBDownloader.nativetemplates.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/FBDownloader.nativetemplates.iml" />
     </modules>
   </component>
 </project>
