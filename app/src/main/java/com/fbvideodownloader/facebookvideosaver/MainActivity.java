@@ -34,6 +34,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.google.android.gms.ads.AdListener;
@@ -42,6 +43,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -55,6 +58,7 @@ import java.util.concurrent.TimeUnit;
 import config.admob;
 import func.movefile;
 import func.notifications;
+import okhttp3.internal.Util;
 import permission.auron.com.marshmallowpermissionhelper.ActivityManagePermission;
 import permission.auron.com.marshmallowpermissionhelper.PermissionResult;
 import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
@@ -185,7 +189,7 @@ public class MainActivity extends ActivityManagePermission {
 
 
                 if (position == 0) {
-
+                    UIUtil.hideKeyboard(context);
                     mCounte++;
 
                     String mCounter = getResources().getString(R.string.admob_interstitial_counter);
@@ -200,8 +204,7 @@ public class MainActivity extends ActivityManagePermission {
 
                 }
                 if (position == 1) {
-
-
+                    UIUtil.hideKeyboard(context);
                     mCounte++;
 
                     String mCounter = getResources().getString(R.string.admob_interstitial_counter);
@@ -221,6 +224,7 @@ public class MainActivity extends ActivityManagePermission {
                     recyclerview j = ((recyclerview) getSupportFragmentManager()
                             .findFragmentByTag("android:switcher:" + R.id.viewpager + ":2"));
                     j.loadMedia();
+                    UIUtil.hideKeyboard(context);
 
 
                     mCounte++;
@@ -262,6 +266,7 @@ public class MainActivity extends ActivityManagePermission {
         }
 
     }
+
 
 
     private void reqPermission() {
@@ -417,7 +422,6 @@ public class MainActivity extends ActivityManagePermission {
 
     @Override
     public void onBackPressed() {
-
         // double click to exit
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();

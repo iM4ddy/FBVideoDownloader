@@ -24,6 +24,7 @@ import com.fbvideodownloader.facebookvideosaver.dialog_rename;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
 import net.rdrei.android.dirchooser.DirectoryChooserConfig;
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import java.io.File;
 import java.lang.reflect.Field;

@@ -2,12 +2,19 @@ package com.fbvideodownloader.facebookvideosaver;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.ItemTouchUIUtil;
+
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import java.io.File;
 
@@ -51,7 +58,7 @@ public class dialog_rename extends DialogFragment {
 
         input.setText(name);
 
-        String title = "Change Name :";
+        final String title = "Change Name :";
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         alertDialogBuilder.setTitle(title);
         alertDialogBuilder.setView(input);
@@ -66,11 +73,9 @@ public class dialog_rename extends DialogFragment {
                         File from = new File(filename);
                         File to = new File(filename.replaceAll(split,"") + input.getText().toString() + "." + extension);
                         from.renameTo(to);
-
                         recyclerview j = ((recyclerview) getActivity().getSupportFragmentManager()
-                                .findFragmentByTag("android:switcher:" + R.id.viewpager + ":1"));
+                                .findFragmentByTag("android:switcher:" + R.id.viewpager + ":2"));
                         j.loadMedia();
-
                         Toast.makeText(getActivity(), "Renamed Successful.", Toast.LENGTH_SHORT).show();
 
                     } catch (Exception e) {
@@ -89,7 +94,7 @@ public class dialog_rename extends DialogFragment {
                 dialog.dismiss();
             }
         });
-
         return alertDialogBuilder.create();
     }
+
 }
