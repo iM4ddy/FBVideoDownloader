@@ -41,6 +41,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.onesignal.OneSignal;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
@@ -100,6 +101,12 @@ public class MainActivity extends ActivityManagePermission {
 
         ratingDialog.show();
 
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
         // Firebase Messaging
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel = new NotificationChannel("MyNotification", "MyNotification", NotificationManager.IMPORTANCE_DEFAULT);
@@ -119,6 +126,7 @@ public class MainActivity extends ActivityManagePermission {
                         }
                     }
                 });
+
         // Rewarded ad
         /*rewardedAd = new RewardedAd(this, admob.rewarded_ad);
 
