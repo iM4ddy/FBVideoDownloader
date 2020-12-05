@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
+import android.provider.MediaStore;
+import android.util.Log;
 
 import net.rdrei.android.dirchooser.DirectoryChooserActivity;
 import net.rdrei.android.dirchooser.DirectoryChooserConfig;
@@ -21,7 +24,7 @@ import config.admob;
  */
 public class SettingsFragment extends PreferenceFragment {
     int REQUEST_DIRECTORY = 198;
-    Preference rateus , sharethisapp , moreapp , path , contactme, consent, privacy;
+    Preference rateus , sharethisapp , path , contactme, consent, privacy;
     private String mBaseFolderPath;
     ConsentSDK consentSDK;
 
@@ -39,13 +42,12 @@ public class SettingsFragment extends PreferenceFragment {
 
         rateus = (Preference) findPreference("rateus");
         sharethisapp = (Preference) findPreference("sharethisapp");
-        // moreapp = (Preference) findPreference("moreapp");
         path = (Preference) findPreference("path");
         contactme = (Preference) findPreference("contactme");
         consent = (Preference) findPreference("consent");
         privacy = (Preference) findPreference("privacy");
 
-        consentSDK.checkConsent(new ConsentSDK.ConsentCallback() {
+        /*consentSDK.checkConsent(new ConsentSDK.ConsentCallback() {
             @Override
             public void onResult(boolean isRequestLocationInEeaOrUnknown) {
                 // Your code
@@ -66,7 +68,7 @@ public class SettingsFragment extends PreferenceFragment {
                     consent.setEnabled(false);
                 }
             }
-        });
+        });*/
 
 
         SharedPreferences preferences = getActivity().getSharedPreferences(getResources().getString(R.string.pref_appname), Context.MODE_PRIVATE);
@@ -75,20 +77,26 @@ public class SettingsFragment extends PreferenceFragment {
 
             if(!preferences.getString("path", "DEFAULT").equals("DEFAULT")){
 
+                Log.d("pref", "preferences: " + preferences.getString("path", "DEFAULT"));
                 mBaseFolderPath = preferences
                         .getString("path", "DEFAULT");
 
             }else{
 
-                mBaseFolderPath = android.os.Environment
+                /*mBaseFolderPath = android.os.Environment
                         .getExternalStorageDirectory()
                         + File.separator
+                        + folderName + File.separator;*/
+
+                mBaseFolderPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                        + File.separator
                         + folderName + File.separator;
+
             }
 
             path.setSummary(mBaseFolderPath);
 
-        SwitchPreference notification = (SwitchPreference)findPreference(getResources().getString(R.string.pref_notification));
+        /*SwitchPreference notification = (SwitchPreference)findPreference(getResources().getString(R.string.pref_notification));
         SwitchPreference disableNotificationsDownloader = (SwitchPreference)findPreference(getResources().getString(R.string.pref_hidenotification));
 
         notification.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -119,7 +127,7 @@ public class SettingsFragment extends PreferenceFragment {
 
                 return true;
             }
-        });
+        });*/
 
         path.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {

@@ -87,7 +87,10 @@ public class recyclerview extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences(getResources().getString(R.string.pref_appname), Context.MODE_PRIVATE);
 
         if(!preferences.getString("path", "DEFAULT").equals("DEFAULT")){
-            file = new File(preferences.getString("path", "DEFAULT"));
+            // file = new File(preferences.getString("path", "DEFAULT"));
+            file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                    + File.separator
+                    + folderName + File.separator);
         }else{
             file = new File(Environment.getExternalStorageDirectory()
                     + File.separator + folderName + File.separator);

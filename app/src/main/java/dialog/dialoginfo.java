@@ -11,6 +11,8 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.fbvideodownloader.facebookvideosaver.MainActivity;
 import com.fbvideodownloader.facebookvideosaver.R;
+import com.fbvideodownloader.facebookvideosaver.recyclerview;
 import com.google.android.ads.nativetemplates.TemplateView;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -101,6 +104,7 @@ public class dialoginfo extends DialogFragment{
         stream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                admob.mCounte++;
                 func.player.mPlayerStream(video , getActivity());
             }
         });
@@ -108,7 +112,6 @@ public class dialoginfo extends DialogFragment{
         saveVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    MainActivity.displayInterstitial();
 
                 if(Build.VERSION.SDK_INT >= 23){
 
@@ -130,7 +133,16 @@ public class dialoginfo extends DialogFragment{
                     downloadManager(video, "video", saveVideo);
 
                 }
+                admob.mCounte++;
+                Log.d("adC", "ad" + admob.mCounte);
+                // display interstitial
+                if (admob.mCounte >= admob.mCounter) {
 
+                    if (MainActivity.interstitial.isLoaded()) {
+                        MainActivity.interstitial.show();
+                        admob.mCounte = 0;
+                    }
+                }
             }
         });
 
@@ -182,7 +194,96 @@ public class dialoginfo extends DialogFragment{
 
         String folderName = getResources().getString(R.string.foldername);
 
-        try {
+        if(!preferences.getString("path", "DEFAULT").equals("DEFAULT")){
+
+            mBaseFolderPath = preferences
+                    .getString("path", "DEFAULT");
+
+        }else{
+
+            /*mBaseFolderPath = android.os.Environment
+                    .getExternalStorageDirectory()
+                    + File.separator
+                    + folderName + File.separator;*/
+
+            Log.d("checkif", "This is else");
+
+            mBaseFolderPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                    + File.separator
+                    + folderName + File.separator;
+
+        }
+
+        if (!new File(mBaseFolderPath).exists()) {
+            new File(mBaseFolderPath).mkdir();
+        }
+
+        String name = reg.getBack(vid_url, "/([^/]+)$");
+
+        if(type.equals("video") && !saveas.getText().toString().isEmpty()){
+
+            name = saveas.getText().toString() + ".mp4";
+
+        }
+
+        mMediaPath = mBaseFolderPath + File.separator + name;
+
+            /*saveas.setVisibility(View.GONE);
+            tsave.setVisibility(View.GONE);*/
+
+        retryPolicy = new DefaultRetryPolicy();
+
+
+        downloadUri = Uri.parse(vid_url);
+        destinationUri = Uri.parse("file://" + mMediaPath);
+
+
+
+        if(preferences.getBoolean(getResources().getString(R.string.pref_hidenotification) , false)){
+
+            DownloadManager.Request req = new DownloadManager.Request(downloadUri);
+            req.setDestinationUri(destinationUri)
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    .allowScanningByMediaScanner();
+
+            DownloadManager dm = (DownloadManager) getActivity().getSystemService(getActivity().getApplicationContext().DOWNLOAD_SERVICE);
+            dm.enqueue(req);
+
+            Toast toast = Toast.makeText(getActivity(),
+                    "Download Started",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+            getDialog().dismiss();
+
+
+        }else{
+
+            downloadRequest = new DownloadRequest(downloadUri)
+                    .addCustomHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36")
+                    .setDestinationURI(destinationUri).setPriority(DownloadRequest.Priority.HIGH)
+                    .setRetryPolicy(retryPolicy)
+                    .setDownloadContext("Download1")
+                    .setStatusListener(new MyDownloadDownloadStatusListenerV1());
+
+            ThinDownloadManager downloadManager = new ThinDownloadManager();
+
+
+            int downloadId = downloadManager.add(downloadRequest);
+
+            //btn.setVisibility(View.GONE);
+
+            /**
+             * Change Text download SaveVideo to Cancel button by setText(""); for user
+             * to be able to cancel download
+             *
+             int status = downloadManager.cancel(downloadId);
+             saveVideo.setText("Cancel");
+
+             **/
+
+        }
+
+        /*try {
 
             if(!preferences.getString("path", "DEFAULT").equals("DEFAULT")){
 
@@ -211,14 +312,15 @@ public class dialoginfo extends DialogFragment{
 
             mMediaPath = mBaseFolderPath + File.separator + name;
 
-            saveas.setVisibility(View.GONE);
-            tsave.setVisibility(View.GONE);
+            *//*saveas.setVisibility(View.GONE);
+            tsave.setVisibility(View.GONE);*//*
 
             retryPolicy = new DefaultRetryPolicy();
 
 
             downloadUri = Uri.parse(vid_url);
             destinationUri = Uri.parse("file://" + mMediaPath);
+
 
 
             if(preferences.getBoolean(getResources().getString(R.string.pref_hidenotification) , false)){
@@ -252,16 +354,16 @@ public class dialoginfo extends DialogFragment{
 
                 int downloadId = downloadManager.add(downloadRequest);
 
-                btn.setVisibility(View.GONE);
+                //btn.setVisibility(View.GONE);
 
-                /**
+                *//**
                  * Change Text download SaveVideo to Cancel button by setText(""); for user
                  * to be able to cancel download
                  *
                  int status = downloadManager.cancel(downloadId);
                  saveVideo.setText("Cancel");
 
-                 **/
+                 **//*
 
             }
 
@@ -283,7 +385,7 @@ public class dialoginfo extends DialogFragment{
 
 
                     int downloadId = downloadManager.add(downloadRequest);
-                    btn.setVisibility(View.GONE);
+                    //btn.setVisibility(View.GONE);
 
                 }catch(Exception j){
 
@@ -307,7 +409,7 @@ public class dialoginfo extends DialogFragment{
 
             }
 
-        }
+        }*/
 
         //Video_Managers.IsRUN = false;
 
@@ -319,7 +421,6 @@ public class dialoginfo extends DialogFragment{
 
         @Override
         public void onDownloadComplete(DownloadRequest downloadRequest) {
-
 
             try{
                 // Tell the media scanner about the new file so that it is

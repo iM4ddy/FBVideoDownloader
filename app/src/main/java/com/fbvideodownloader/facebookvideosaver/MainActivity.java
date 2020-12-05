@@ -13,15 +13,8 @@ import android.os.Environment;
 import android.os.Handler;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
-import com.google.android.gms.ads.rewarded.RewardItem;
-import com.google.android.gms.ads.rewarded.RewardedAd;
-import com.google.android.gms.ads.rewarded.RewardedAdCallback;
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
@@ -66,7 +59,7 @@ import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
 
 public class MainActivity extends ActivityManagePermission {
 
-    private int mCounte = 12;
+    private int mCounte = 4;
     public static InterstitialAd interstitial;
     boolean doubleBackToExitPressedOnce = false;
     public static String filepath = "";
@@ -89,7 +82,6 @@ public class MainActivity extends ActivityManagePermission {
         //Rating Dialog
         final RatingDialog ratingDialog = new RatingDialog.Builder(this)
                 .threshold(4)
-                .session(3)
                 .title("We'd appreciate if you can give us 5 stars")
                 .icon(getDrawable(R.drawable.star))
                 .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
@@ -98,8 +90,6 @@ public class MainActivity extends ActivityManagePermission {
                         Toast.makeText(MainActivity.this, "Thank You!", Toast.LENGTH_SHORT).show();
                     }
                 }).build();
-
-        ratingDialog.show();
 
         // OneSignal Initialization
         OneSignal.startInit(this)
@@ -286,8 +276,7 @@ public class MainActivity extends ActivityManagePermission {
 
                     String folderName = getResources().getString(R.string.foldername);
 
-                    String mBaseFolderPath = Environment
-                            .getExternalStorageDirectory()
+                    String mBaseFolderPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                             + File.separator
                             + folderName + File.separator;
                     if (!new File(mBaseFolderPath).exists()) {
@@ -383,9 +372,9 @@ public class MainActivity extends ActivityManagePermission {
 
             case R.id.item5:
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://developer?id=Xtreem+Inc.")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=8188807602471114079")));
                 } catch (android.content.ActivityNotFoundException anfe) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/developer?id=Xtreem+Inc.")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=8188807602471114079")));
                 }
                 return true;
 
@@ -465,7 +454,7 @@ public class MainActivity extends ActivityManagePermission {
                         movefile.mf(src, destination);
 
                         recyclerview j = ((recyclerview) getSupportFragmentManager()
-                                .findFragmentByTag("android:switcher:" + R.id.viewpager + ":1"));
+                                .findFragmentByTag("android:switcher:" + R.id.viewpager + ":2"));
                         j.loadMedia();
 
                         Toast.makeText(this, "Moved Successful.", Toast.LENGTH_SHORT).show();

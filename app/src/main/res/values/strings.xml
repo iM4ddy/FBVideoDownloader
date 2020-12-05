@@ -40,11 +40,11 @@
     <string name="tab_guide">Facebook</string>
 
     <!-- Folder name -->
-    <string name="foldername">FB Video Downloader</string>
+    <string name="foldername">FB Downloaded Videos</string>
 
     <!-- admob settings off/on Interstitial -->
     <string name="onoff_Interstitial">on</string>
-    <string name="admob_interstitial_counter">13</string>
+    <string name="admob_interstitial_counter">6</string>
     <string name="video_downloader_for_facebook">Video Downloader For Facebook</string>
 
 
