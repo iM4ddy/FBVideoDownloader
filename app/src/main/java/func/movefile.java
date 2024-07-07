@@ -6,9 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 
-/**
- * Created by mac on 29/02/16.
- */
+
 public class movefile {
 
     public static void mf(File file, File dir) throws IOException {
